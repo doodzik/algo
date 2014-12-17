@@ -111,10 +111,20 @@ void destroyList (StudentList* sl)
     free(node);
  }
 
-void swapStudents(StudentList* sl, StudentList* min, StudentList* i)
-{
-    
-}
+ void swapStudents(StudentList* sl, StudentList* prev, StudentList* next)
+ {
+     StudentList* nextNext = next->next;
+     StudentList* prevPrev = prev->previous;
+ 
+     next->next = prev;
+     prev->previous = next;
+ 
+     next->previous = prevPrev;
+     prev->next = nextNext;
+ 
+     prevPrev->next = next;
+     nextNext->previous = prev;
+ }
 
 void sortMatrikel(StudentList* sl)
 {

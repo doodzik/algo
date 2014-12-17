@@ -105,9 +105,33 @@ void destroyList (StudentList* sl)
 }
 
 //TODO swap students
-void swapStudents(StudentList* sl, StudentList* min, StudentList* i)
+void swapStudents(StudentList* sl, StudentList* prev, StudentList* next)
 {
+    StudentList* i;
+    StudentList* next1 = next->next;
+    StudentList* prev1 = prev->next;
+    
+    next->next = prev1;
+    
+    prev->next = next1;
 
+    for (i = sl->next; i->next != 0L; i=i->next) {
+        if(i->next == prev){
+            i->next = next;
+            break;
+        }
+    }
+}
+
+void swapStudentsWithPrev(StudentList* prevPrev, StudentList* prev, StudentList* next)
+{
+    StudentList* nextNext = next->next;
+    StudentList* prevNext = prev->next;
+    
+    next->next = prevNext;
+    
+    prev->next = nextNext;
+    prevPrev->next = next;
 }
 
 void sortMatrikel(StudentList* sl)
