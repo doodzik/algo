@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 Frederik Dudzik. All rights reserved.
 //
 #include <stdlib.h>
-#include <regex.h>
 #include <string.h>
 #include "student.h"
 #include "student_list.h"
@@ -103,6 +102,40 @@ void destroyList (StudentList* sl)
     free(nOld);
   }
   free(node);
+}
+
+//TODO swap students
+void swapStudents(StudentList* min, StudentList* i)
+{
+
+}
+
+void sortMatrikel(StudentList* sl)
+{
+    StudentList* j;
+    StudentList* i;
+    StudentList* min;
+    
+    // after each iteration shift the list List (f x:xs = xs)
+    for (i = sl; i != 0L; i=i->next) {
+        min = 0L;
+        // iterate over the tail (xs)
+        for (j=i->next; j != 0L; j = j->next) {
+            // get the smalles element in the tail and assign it to min
+            if (min==0L||i->student->id < min->student->id)
+                min = j;
+        }
+        // swap the smallest element with the tails head
+        swapStudents(min, i);
+    }
+    
+    //Selection
+}
+
+void sortStudiengang(StudentList* sl)
+{
+    
+    //Bubble
 }
 
 

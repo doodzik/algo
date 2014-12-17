@@ -7,7 +7,6 @@
 //
 /*
 #include <stdlib.h>
-#include <regex.h>
 #include <string.h>
 #include "student.h"
 #include "student_list_doubly.h"
@@ -110,5 +109,18 @@ void destroyList (StudentList* sl)
         free(nOld);
     }
     free(node);
-}
+ }
+ 
+ void sortMatrikel(StudentList* sl)
+ {
+ 
+ //Selection
+ }
+ 
+ void sortStudiengang(StudentList* sl)
+ {
+ 
+ //Bubble
+ }
+ 
 */

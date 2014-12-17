@@ -30,7 +30,7 @@ int main(int argc, const char * argv[])
     while(1)
     {
         printf("What function do you want to run?\n");
-        printf("PUSH, UNSHIFT, PRINT, LENGTH, DELETE, DELETE_ALL, FIND_ID, QUERY, SORT_BUBBLE, SORT_SELECTION, QUIT\n");
+        printf("PUSH, UNSHIFT, PRINT, LENGTH, DELETE, DELETE_ALL, FIND_ID, QUERY, SORT_MATRIKEL, SORT_STUDIENGANG, QUIT\n");
         
         fgets(str, sizeof(str), stdin);
 
@@ -62,15 +62,17 @@ int main(int argc, const char * argv[])
              (i) Implementieren Sie Funktionalität zum Suchen eines oder mehrerer Studenten nach Vor- und
              Nachname, Matrikelnummer und Studiengang.
             */
-        } else if (strncmp(str, "SORT_BUBBLE\n", 100) == 0) {
+        } else if (strncmp(str, "SORT_STUDIENGANG\n", 100) == 0) {
+            sortStudiengang(sl);
             /*
+             buuble
              (j) Implementieren Sie Funktionalität zum Sortieren der Datensätze der Studenten, Matrikel-
              nummer und Studiengang nach zwei selbstgewählten Sortierverfahren.
              */
-        } else if (strncmp(str, "SORT_SELECTION\n",  100) == 0) {
+        } else if (strncmp(str, "SORT_MATRIKEL\n",  100) == 0) {
+            sortMatrikel(sl);
           /*
-            (j) Implementieren Sie Funktionalität zum Sortieren der Datensätze der Studenten, Matrikel-
-            nummer und Studiengang nach zwei selbstgewählten Sortierverfahren.
+             Selection
           */
         } else if (strncmp(str, "QUIT\n",        100) == 0) {
             return 0;
