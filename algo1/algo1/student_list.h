@@ -29,5 +29,5 @@ int destroy (StudentList* sl, int stundent_id);
 void destroyList (StudentList* sl);
 void sortMatrikel(StudentList* sl);
 void sortStudiengang(StudentList* sl);
-void swapStudents(StudentList* min, StudentList* i);
+void swapStudents(StudentList* sl, StudentList* min, StudentList* i);
 #endif /* defined(__algo1__list__) */
