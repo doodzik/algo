@@ -9,6 +9,8 @@
 #ifndef __algo1__student_list_doubly__
 #define __algo1__student_list_doubly__
 
+#if DOUBLE_LINKED_LIST == 1
+
 #include <stdio.h>
 #include "student.h"
 
@@ -17,6 +19,7 @@ struct studentList {
     Student* student;
     StudentList* next;
     StudentList* previous;
+    StudentList* sentientEnd;
 };
 
 StudentList* initStudentList ();
@@ -33,4 +36,5 @@ void sortStudiengang(StudentList* sl);
 void swapStudents(StudentList* sl, StudentList* prev, StudentList* next);
 StudentList* queryStudentList(StudentList* sl, char* lastName, char* firstName, int student_id, char* subject);
 
+#endif /* DOUBLE_LINKED_LIST */
 #endif /* defined(__algo1__student_list_doubly__) */

@@ -5,6 +5,8 @@
 //  Created by Frederik Dudzik on 14.12.14.
 //  Copyright (c) 2014 Frederik Dudzik. All rights reserved.
 //
+#if DOUBLE_LINKED_LIST != 1
+
 #include <stdlib.h>
 #include <string.h>
 #include "student.h"
@@ -16,7 +18,6 @@ StudentList* initStudentList ()
     StudentList* head = (StudentList*) malloc(sizeof(StudentList));
     // if (head == 0L) return EXIT_FAILURE;
     head->next = 0L;
-    head->student = (Student*) malloc(sizeof(Student));
     return head;
 }
 
@@ -185,3 +186,5 @@ StudentList* queryStudentList(StudentList* sl, char* lastName, char* firstName, 
     }
     return newSL;
 }
+
+#endif /* DOUBLE_LINKED_LIST */

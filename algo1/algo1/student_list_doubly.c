@@ -5,7 +5,9 @@
 //  Created by Frederik Dudzik on 15.12.14.
 //  Copyright (c) 2014 Frederik Dudzik. All rights reserved.
 //
-/*
+
+#if DOUBLE_LINKED_LIST == 1
+
 #include <stdlib.h>
 #include <string.h>
 #include "student.h"
@@ -13,12 +15,14 @@
 
 StudentList* initStudentList ()
 {
-    // TODO add end Sentinel node
     StudentList* head = (StudentList*) malloc(sizeof(StudentList));
+    StudentList* tail = (StudentList*) malloc(sizeof(StudentList));
     //if (head == 0L) return EXIT_FAILURE;
-    head->next = 0L;
     head->previous = 0L;
-    head->student = (Student*) malloc(sizeof(Student));
+    tail->next = 0L;
+    head->next = tail;
+    tail->previous = head;
+    head->sentientEnd = tail;
     return head;
 }
 
@@ -39,9 +43,8 @@ void push (StudentList* sl, Student* s)
 {
     StudentList* nNew;
     nNew->student = s;
-    StudentList* node = sl->next;
-    while (node->next != NULL)
-        node = node->next;
+    StudentList* node = sl->sentientEnd->previous;
+    sl->sentientEnd->previous = nNew
     nNew->previous = node;
     node->next = nNew;
 }
@@ -163,4 +166,5 @@ void sortStudiengang(StudentList* sl)
         }
     } while (swaped);
 }
- */
+
+#endif /* DOUBLE_LINKED_LIST */
