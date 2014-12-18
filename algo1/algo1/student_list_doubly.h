@@ -31,4 +31,6 @@ void destroyList (StudentList* sl);
 void sortMatrikel(StudentList* sl);
 void sortStudiengang(StudentList* sl);
 void swapStudents(StudentList* sl, StudentList* prev, StudentList* next);
+StudentList* queryStudentList(StudentList* sl, char* lastName, char* firstName, int student_id, char* subject);
+
 #endif /* defined(__algo1__student_list_doubly__) */

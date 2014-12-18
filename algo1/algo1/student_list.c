@@ -14,7 +14,7 @@
 StudentList* initStudentList ()
 {
     StudentList* head = (StudentList*) malloc(sizeof(StudentList));
-    //if (head == 0L) return EXIT_FAILURE;
+    // if (head == 0L) return EXIT_FAILURE;
     head->next = 0L;
     head->student = (Student*) malloc(sizeof(Student));
     return head;
@@ -160,9 +160,12 @@ void sortStudiengang(StudentList* sl)
     //Bubble
     StudentList* i;
     int swaped;
+    // iterate until nothing was swaped in one run
     do {
         swaped = 0;
+        // move window one field to the right
         for (i = sl->next; i != 0L; i=i->next) {
+            // if two fields in window are (right > left) swap them
             if (i->student->subject > i->next->student->subject) {
                 swapStudents(sl, i, i->next);
                 swaped = 1;
@@ -171,4 +174,14 @@ void sortStudiengang(StudentList* sl)
     } while (swaped);
 }
 
-
+StudentList* queryStudentList(StudentList* sl, char* lastName, char* firstName, int student_id, char* subject)
+{
+    StudentList* newSL = initStudentList();
+    StudentList* i;
+    for (i = sl->next; i != 0L; i=i->next) {
+        if(matchesStudent(lastName, firstName, student_id, subject)) {
+            push(newSL, i->student);
+        }
+    }
+    return newSL;
+}

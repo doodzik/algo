@@ -64,19 +64,10 @@ int main(int argc, const char * argv[])
             */
         } else if (strncmp(str, "SORT_STUDIENGANG\n", 100) == 0) {
             sortStudiengang(sl);
-            /*
-             buuble
-             (j) Implementieren Sie Funktionalität zum Sortieren der Datensätze der Studenten, Matrikel-
-             nummer und Studiengang nach zwei selbstgewählten Sortierverfahren.
-             */
         } else if (strncmp(str, "SORT_MATRIKEL\n",  100) == 0) {
             sortMatrikel(sl);
-          /*
-             Selection
-          */
         } else if (strncmp(str, "QUIT\n",        100) == 0) {
             return 0;
-        
         }
     }
     return 0;

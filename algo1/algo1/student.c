@@ -48,3 +48,9 @@ void printStudent (Student* s)
     printf("\t\tMatriculation number: %d\n", s->id);
     printf("\n");
 }
+
+int matchesStudent(char* lastName, char* firstName, int student_id, char* subject)
+{
+    
+    return 1;
+}

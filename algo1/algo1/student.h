@@ -21,6 +21,7 @@ typedef struct student Student;
 
 Student* newStudent (char* firstName, char* lastName, char* subject, int id);
 Student* newStudentCli ();
+int matchesStudent(char* lastName, char* firstName, int student_id, char* subject);
 void printStudent (Student* s);
 
 #endif /* defined(__algo1__student__) */

@@ -13,6 +13,7 @@
 
 StudentList* initStudentList ()
 {
+    // TODO add end Sentinel node
     StudentList* head = (StudentList*) malloc(sizeof(StudentList));
     //if (head == 0L) return EXIT_FAILURE;
     head->next = 0L;
