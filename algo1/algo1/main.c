@@ -26,12 +26,12 @@ int main(int argc, const char * argv[])
     char* str = malloc(100);
     StudentList* sl = initStudentList();
     int sl_length = 0;
-    char* stundent_id;
+    char* stundent_id = 0L;
     while(1)
     {
         printf("What function do you want to run?\n");
         printf("PUSH, UNSHIFT, PRINT, LENGTH, DELETE, DELETE_ALL, FIND_ID, QUERY, SORT_MATRIKEL, SORT_STUDIENGANG, QUIT\n");
-        
+
         fgets(str, sizeof(str), stdin);
 
         if        (strncmp(str, "PUSH\n",        100) == 0) {
