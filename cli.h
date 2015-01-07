@@ -1,12 +1,6 @@
 // author Frederik Dudzik
 
-#define DOUBLE_LINKED_LIST 0
-
-#if DOUBLE_LINKED_LIST == 1
-#include "student_list_doubly.h"
-#else
 #include "student_list.h"
-#endif
 
 char* concat(char *s1, char *s2);
 int is_function(char function[], char str[]);

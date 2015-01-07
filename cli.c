@@ -5,14 +5,7 @@
 #include <string.h>
 #include "cli.h"
 #include "student.h"
-
-#define DOUBLE_LINKED_LIST 0
-
-#if DOUBLE_LINKED_LIST == 1
-#include "student_list_doubly.h"
-#else
 #include "student_list.h"
-#endif
 
 
 char* concat(char *s1, char *s2)
