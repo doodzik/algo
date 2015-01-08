@@ -72,5 +72,3 @@ StudentList* queryStudentList(StudentList* sl, char lastName[], char firstName[]
     return newSL;
 }
 
-/* TODO: implement void sortMatrikel(StudentList* sl) */
-

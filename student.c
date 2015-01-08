@@ -9,13 +9,23 @@
 #include <string.h>
 #include "student.h"
 
+int subjectByName(char name[])
+{
+  for(int i = 0; i < sizeof(SUBJECT_STRING)/ sizeof(char); i++)
+  {
+    if(SUBJECT_STRING[i] == name)
+      return i;
+  }
+  return 0;
+}
+
 Student* newStudent (char* firstName, char* lastName, char* subject, int id)
 {
     Student* s = (Student*) malloc(sizeof(Student));
     /* if (head == 0L) return EXIT_FAILURE; */
     s->firstName = firstName;
     s->lastName = lastName;
-    s->subject = subject;
+    s->subject = subjectByName(subject);
     s->id = id;
     return s;
 }
@@ -44,7 +54,7 @@ void printStudent (Student* s)
     printf("\n\tStudent:\n");
     printf("\t\first name: %s\n", s->firstName);
     printf("\t\tlast name: %s\n", s->lastName);
-    printf("\t\t subject: %s\n", s->subject);
+    printf("\t\t subject: %s\n", SUBJECT_STRING[s->subject]);
     printf("\t\tMatriculation number: %d\n", s->id);
     printf("\n");
 }
@@ -66,9 +76,9 @@ int matchesInt(int intTarget, int intToCmpr)
   return matchesString(str, strToCmpr);
 }
 
-int matchesEnum(char str[], char strToCmpr[])
+int matchesEnum(Subject subject, char subjectToCmpr[])
 {
-  if(strToCmpr[0] != '\0' || strstr(str, strToCmpr))
+  if(subjectToCmpr[0] != '\0' || subjectByName(subjectToCmpr) == subject)
     return 0;
   else
     return 1;

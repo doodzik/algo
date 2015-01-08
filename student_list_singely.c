@@ -41,8 +41,6 @@ void push (StudentList* sl, Student* s)
   node->next = nNew;
 }
 
-
-
 int destroy (StudentList* sl, int stundent_id)
 {
     StudentList* node = sl->next;

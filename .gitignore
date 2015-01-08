@@ -31,4 +31,5 @@
 algo1/algo1.xcodeproj
 algo1.xcodeproj
 
+main.dSYM/*
 *.swp
