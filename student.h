@@ -12,6 +12,9 @@
 #include <stdio.h>
 
 /* DEFINE SUBJECT ENUM */
+#define GENERATE_ENUM(ENUM) ENUM,
+#define GENERATE_STRING(STRING) #STRING,
+
 #define FOREACH_SUBJECT(SUBJECT) \
         SUBJECT(blank)    \
         SUBJECT(cs)       \
@@ -19,8 +22,6 @@
         SUBJECT(fashion)  \
         SUBJECT(economy)  \
 
-#define GENERATE_ENUM(ENUM) ENUM,
-#define GENERATE_STRING(STRING) #STRING,
 
 typedef enum SUBJECT_ENUM {
     FOREACH_SUBJECT(GENERATE_ENUM)

@@ -9,16 +9,6 @@
 #include <string.h>
 #include "student.h"
 
-int subjectByName(char name[])
-{
-  for(int i = 0; i < sizeof(SUBJECT_STRING)/ sizeof(char); i++)
-  {
-    if(SUBJECT_STRING[i] == name)
-      return i;
-  }
-  return 0;
-}
-
 Student* newStudent (char* firstName, char* lastName, char* subject, int id)
 {
     Student* s = (Student*) malloc(sizeof(Student));
@@ -91,3 +81,14 @@ int matchesStudent(Student* s, char lastName[], char firstName[], int student_id
   else
     return 1;
 }
+
+int subjectByName(char name[])
+{
+  for(int i = 0; i < sizeof(SUBJECT_STRING)/ sizeof(char); i++)
+  {
+    if(SUBJECT_STRING[i] == name)
+      return i;
+  }
+  return 0;
+}
+

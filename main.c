@@ -15,7 +15,6 @@ int main(int argc, const char * argv[])
   StudentList* sl = initStudentList();
   int iSlLength = 0;
   int* sl_length = &iSlLength;
-  /* char* stundent_id = 0L; */
   while(1)
   {
     print_possible_functions();
