@@ -59,5 +59,18 @@ void destroyList (StudentList* sl)
   free(node);
 }
 
+
+StudentList* queryStudentList(StudentList* sl, char lastName[], char firstName[], int student_id, char subject[])
+{
+    StudentList* newSL = initStudentList();
+    StudentList* i;
+    for (i = sl->next; i != 0L; i=i->next) {
+        if(matchesStudent(i->student ,lastName, firstName, student_id, subject)) {
+            push(newSL, i->student);
+        }
+    }
+    return newSL;
+}
+
 /* TODO: implement void sortMatrikel(StudentList* sl) */
 

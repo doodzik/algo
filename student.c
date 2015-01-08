@@ -36,7 +36,6 @@ Student* newStudentCli ()
     printf("Martikel Number: \n");
     fgets(id, sizeof(id), stdin);
 
-    // TODO don't use atoi
     return newStudent (firstName, lastName, subject, atoi(id));
 }
 
@@ -50,8 +49,35 @@ void printStudent (Student* s)
     printf("\n");
 }
 
-int matchesStudent(char* lastName, char* firstName, int student_id, char* subject)
+int matchesString(char* str, char* strToCmpr)
 {
+  if(strToCmpr[0] != '\0' || strstr(str, strToCmpr))
+    return 0;
+  else
+    return 1;
+}
 
+int matchesInt(int intTarget, int intToCmpr)
+{
+  char str[15];
+  sprintf(str, "%d", intTarget);
+  char strToCmpr[15];
+  sprintf(strToCmpr, "%d", intToCmpr);
+  return matchesString(str, strToCmpr);
+}
+
+int matchesEnum(char str[], char strToCmpr[])
+{
+  if(strToCmpr[0] != '\0' || strstr(str, strToCmpr))
+    return 0;
+  else
+    return 1;
+}
+
+int matchesStudent(Student* s, char lastName[], char firstName[], int student_id, char subject[])
+{
+  if(matchesString(s->lastName, lastName) && matchesString(s->firstName, firstName) && matchesInt(s->id, student_id) && matchesEnum(s->subject, subject))
+    return 0;
+  else
     return 1;
 }

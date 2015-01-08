@@ -129,16 +129,4 @@ void sortStudiengang(StudentList* sl)
     } while (swaped);
 }
 
-StudentList* queryStudentList(StudentList* sl, char* lastName, char* firstName, int student_id, char* subject)
-{
-    StudentList* newSL = initStudentList();
-    StudentList* i;
-    for (i = sl->next; i != 0L; i=i->next) {
-        if(matchesStudent(lastName, firstName, student_id, subject)) {
-            push(newSL, i->student);
-        }
-    }
-    return newSL;
-}
-
 #endif /* DOUBLE_LINKED_LIST */
