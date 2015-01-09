@@ -101,7 +101,7 @@ int cli_sort_martikel(StudentList* sl)
 void print_possible_functions()
 {
   printf("What function do you want to run?\n");
-  printf("PUSH, UNSHIFT, PRINT, LENGTH, DELETE, DELETE_ALL, FIND_ID, QUERY, SORT_MATRIKEL, SORT_STUDIENGANG, QUIT\n");
+  printf("PUSH, UNSHIFT, PRINT_ALL, LENGTH, DELETE, DELETE_ALL, FIND_ID, QUERY, SORT_MATRIKEL, SORT_STUDIENGANG, QUIT\n");
 }
 
 int cli_function(char str[], StudentList* sl, int* sl_length)

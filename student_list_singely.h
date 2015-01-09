@@ -17,6 +17,7 @@
 struct studentList {
   Student* student;
   StudentList* next;
+  StudentList* sentientEnd;
 };
 
 #endif /* DOUBLE_LINKED_LIST */

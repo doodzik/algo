@@ -17,8 +17,11 @@
 StudentList* initStudentList ()
 {
     StudentList* head = (StudentList*) malloc(sizeof(StudentList));
-    // if (head == 0L) return EXIT_FAILURE;
-    head->next = 0L;
+    StudentList* tail = (StudentList*) malloc(sizeof(StudentList));
+    //if (head == 0L) return EXIT_FAILURE;
+    tail->next = 0L;
+    head->next = tail;
+    head->sentientEnd = tail;
     return head;
 }
 
@@ -34,11 +37,15 @@ void unshift (StudentList* sl, Student* s)
 void push (StudentList* sl, Student* s)
 {
   StudentList* nNew = (StudentList*) malloc(sizeof(StudentList));
+  StudentList* node;
   nNew->student = s;
-  StudentList* node = sl->next;
-  while (node->next != NULL)
-    node = node->next;
+  nNew->next = sl->sentientEnd;
+  for(node = sl->next; node->next!=0L; node = node->next){
+      
+  }
   node->next = nNew;
+  //while (node->next->next != NULL)
+  //  node = node->next;
 }
 
 int destroy (StudentList* sl, int stundent_id)
