@@ -15,6 +15,8 @@
 #define GENERATE_ENUM(ENUM) ENUM,
 #define GENERATE_STRING(STRING) #STRING,
 
+#define SUBJECT_COUNT 4
+
 #define FOREACH_SUBJECT(SUBJECT) \
         SUBJECT(blank)    \
         SUBJECT(cs)       \
@@ -36,14 +38,14 @@ int subjectByName(char name[]);
 /* DEFINE_END SUBJECT ENUM */
 
 struct student {
-    char* firstName;
-    char* lastName;
+    char *firstName;
+    char *lastName;
     int id;
     Subject subject;
 };
 typedef struct student Student;
 
-Student* newStudent (char* firstName, char* lastName, char* subject, int id);
+Student* newStudent (char firstName[], char lastName[], char subject[], int id);
 Student* newStudentCli ();
 void printStudent (Student* s);
 

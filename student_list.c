@@ -24,13 +24,12 @@ Student* studentFindById(StudentList* sl, int s_id)
 
 void printStudentList  (StudentList* sl)
 {
-  StudentList* node = sl->next;
-  while (node->next != NULL)
-  {
-    printf("\n------\n");
-    printStudent(node->student);
-    node = node->next;
+  StudentList* node;
+  for(node = sl->next; node->next!=0L; node = node->next){
+      printf("------\n");
+      printStudent(node->student);
   }
+  printf("------\n");
 }
 
 int length (StudentList* sl)
@@ -53,10 +52,11 @@ void destroyList (StudentList* sl)
   {
     StudentList* nOld = node;
     node = node->next;
-    free(nOld->student);
     free(nOld);
   }
   free(node);
+  StudentList* sl2 = initStudentList();
+  sl = sl2;
 }
 
 

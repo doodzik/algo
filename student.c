@@ -9,14 +9,16 @@
 #include <string.h>
 #include "student.h"
 
-Student* newStudent (char* firstName, char* lastName, char* subject, int id)
+Student* newStudent (char firstName[], char lastName[], char subject[], int id)
 {
+    
     Student* s = (Student*) malloc(sizeof(Student));
     /* if (head == 0L) return EXIT_FAILURE; */
     s->firstName = firstName;
     s->lastName = lastName;
     s->subject = subjectByName(subject);
     s->id = id;
+    
     return s;
 }
 
@@ -36,17 +38,16 @@ Student* newStudentCli ()
     printf("Martikel Number: \n");
     fgets(id, sizeof(id), stdin);
 
-    return newStudent (firstName, lastName, subject, atoi(id));
+    return newStudent (strtok(firstName, "\n"), strtok(lastName, "\n"), strtok(subject, "\n"), atoi(strtok(id, "\n")));
 }
 
 void printStudent (Student* s)
 {
-    printf("\n\tStudent:\n");
-    printf("\t\first name: %s\n", s->firstName);
-    printf("\t\tlast name: %s\n", s->lastName);
-    printf("\t\t subject: %s\n", SUBJECT_STRING[s->subject]);
-    printf("\t\tMatriculation number: %d\n", s->id);
-    printf("\n");
+    printf("Student:\n");
+    printf("first name: %s\n", s->firstName);
+    printf("last name: %s\n",  s->lastName);
+    printf("subject: %s\n", SUBJECT_STRING[s->subject]);
+    printf("Student Id: %d\n", s->id);
 }
 
 int matchesString(char* str, char* strToCmpr)
@@ -84,11 +85,9 @@ int matchesStudent(Student* s, char lastName[], char firstName[], int student_id
 
 int subjectByName(char name[])
 {
-  for(int i = 0; i < sizeof(SUBJECT_STRING)/ sizeof(char); i++)
-  {
-    if(SUBJECT_STRING[i] == name)
-      return i;
-  }
+  if(name == 0L) return 0;
+  for(int i = 0; i < SUBJECT_COUNT; i++)
+      if(strcmp(SUBJECT_STRING[i], name) == 0) return i;
   return 0;
 }
 

@@ -18,14 +18,16 @@ char* concat(char *s1, char *s2)
 
 int is_function(char function[], char str[])
 {
+  if(strlen(str) > 99 || strlen(function) > 99) return 1;
   char* str2 = concat(function, "\n");
   return (strncmp(str, str2, 100) == 0);
 }
 
 int cli_push(StudentList* sl, int* sl_length)
 {
-  // TODO: push to return status code
-  push(sl, newStudentCli());
+  Student* s = newStudentCli();
+  // TODO get to know why lastName is empty
+  push(sl, s);
   ++*sl_length;
   return 0;
 }
@@ -76,7 +78,7 @@ int cli_delete(StudentList* sl, int* sl_length)
 int cli_find_id(StudentList* sl)
 {
   printStudent(studentFindById(sl, cli_get_student_id()));
-  return 1;
+  return 0;
 }
 
 int cli_query(StudentList* sl)
