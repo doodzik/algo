@@ -77,7 +77,11 @@ int cli_delete(StudentList* sl, int* sl_length)
 
 int cli_find_id(StudentList* sl)
 {
-  printStudent(studentFindById(sl, cli_get_student_id()));
+  Student* s = studentFindById(sl, cli_get_student_id());
+  if (s == 0L)
+    printf("NO SUCH STUDENT\n");
+  else
+    printStudent(s);
   return 0;
 }
 

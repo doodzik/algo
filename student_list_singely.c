@@ -31,7 +31,7 @@ void push (StudentList* sl, Student* s)
     StudentList* node = sl;
     nNew->student = s;
     nNew->next = sl->sentientEnd;
-    while (node->next->next!=0L) {
+    while (node->next->next != 0L ) {
         node = node->next;
     }
     node->next = nNew;
@@ -49,17 +49,17 @@ void unshift (StudentList* sl, Student* s)
 
 int destroy (StudentList* sl, int stundent_id)
 {
-    StudentList* node = sl->next;
+    StudentList* node = sl;
     StudentList* lastNode = node;
-    while (node->next != NULL)
+    while (node->next->next != 0L)
     {
+        node = node->next;
         if (node->student->id == stundent_id) {
             lastNode->next = node->next;
             free(node->student);
-            return 1;
+            return 0;
         }
         lastNode = node;
-        node = node->next;
     }
     return 0;
 }
