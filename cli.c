@@ -84,6 +84,7 @@ int cli_find_id(StudentList* sl)
 int cli_query(StudentList* sl)
 {
   return 1;
+  // printSubjects();
   /*     // (i) Implementieren Sie Funktionalität zum Suchen eines oder mehrerer Studenten nach Vor- und */
   /*     // Nachname, Matrikelnummer und Studiengang. */
 }

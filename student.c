@@ -33,6 +33,7 @@ Student* newStudentCli ()
     fgets(firstName, sizeof(firstName), stdin);
     printf("Last Name: \n");
     fgets(lastName, sizeof(lastName), stdin);
+    printSubjects();
     printf("subject: \n");
     fgets(subject, sizeof(subject), stdin);
     printf("Martikel Number: \n");
@@ -89,5 +90,12 @@ int subjectByName(char name[])
   for(int i = 0; i < SUBJECT_COUNT; i++)
       if(strcmp(SUBJECT_STRING[i], name) == 0) return i;
   return 0;
+}
+
+void printSubjects()
+{
+    printf("possible subjects: ");
+    for(int i = 0; i < SUBJECT_COUNT; i++) printf("%s ", SUBJECT_STRING[i]);
+    printf("\n");
 }
 

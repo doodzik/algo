@@ -48,6 +48,7 @@ typedef struct student Student;
 Student* newStudent (char firstName[], char lastName[], char subject[], int id);
 Student* newStudentCli ();
 void printStudent (Student* s);
+void printSubjects();
 
 int matchesString(char str[], char strToCmpr[]);
 int matchesInt(int intTarget, int intToCmpr);
