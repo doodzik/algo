@@ -9,6 +9,7 @@
 #ifndef __algo1__list_singely__
 #define __algo1__list_singely__
 
+#include "student_list.h"
 #ifndef DOUBLE_LINKED_LIST
 
 #include <stdio.h>

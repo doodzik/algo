@@ -5,12 +5,12 @@
 //  Created by Frederik Dudzik on 14.12.14.
 //  Copyright (c) 2014 Frederik Dudzik. All rights reserved.
 //
+#include "student_list.h"
 #ifndef DOUBLE_LINKED_LIST
 
 #include <stdlib.h>
 #include <string.h>
 #include "student.h"
-#include "student_list.h"
 #include "student_list_singely.h"
 
 

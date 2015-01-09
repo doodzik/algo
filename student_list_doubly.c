@@ -6,12 +6,13 @@
 //  Copyright (c) 2014 Frederik Dudzik. All rights reserved.
 //
 
+#include "student_list.h"
+
 #ifdef DOUBLE_LINKED_LIST
 
 #include <stdlib.h>
 #include <string.h>
 #include "student.h"
-#include "student_list.h"
 #include "student_list_doubly.h"
 
 StudentList* initStudentList ()
@@ -32,11 +33,8 @@ void unshift (StudentList* sl, Student* s)
   StudentList* slNew = (StudentList*) malloc(sizeof(StudentList));
   slNew->previous = 0L;
   slNew->student = s;
-  if (sl->next != 0L){
-
-    slNew->next = sl->next;
-    slNew->next->previous = slNew;
-  }
+  slNew->next = sl->next;
+  slNew->next->previous = slNew;
   sl->next = slNew;
 }
 
@@ -45,9 +43,10 @@ void push (StudentList* sl, Student* s)
   StudentList* nNew = (StudentList*) malloc(sizeof(StudentList));
   nNew->student = s;
   StudentList* node = sl->sentientEnd->previous;
-  sl->sentientEnd->previous = nNew
-    nNew->previous = node;
-  node->next = nNew;
+  sl->sentientEnd->previous = nNew;
+  nNew->previous = node;
+  nNew->next     = sl->sentientEnd;
+  node->next     = nNew;
 }
 
 
@@ -101,7 +100,7 @@ void sortMatrikel(StudentList* sl)
         min = j;
     }
     // swap the smallest element with the tails head
-    swapStudents(min, i);
+    swapStudents(min, i, min->previous);
   }
 }
 
@@ -114,7 +113,7 @@ void sortStudiengang(StudentList* sl)
     swaped = 0;
     for (i = sl->next; i != 0L; i=i->next) {
       if (i->student->subject > i->next->student->subject) {
-        swapStudents(i, i->next);
+        swapStudents(i, i->next, i->previous);
         swaped = 1;
       }
     }

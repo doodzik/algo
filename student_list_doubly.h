@@ -9,6 +9,8 @@
 #ifndef __algo1__student_list_doubly__
 #define __algo1__student_list_doubly__
 
+#include "student_list.h"
+
 #ifdef DOUBLE_LINKED_LIST
 
 #include <stdio.h>
