@@ -20,7 +20,9 @@ int is_function(char function[], char str[])
 {
   if(strlen(str) > 99 || strlen(function) > 99) return 1;
   char* str2 = concat(function, "\n");
-  return (strncmp(str, str2, 100) == 0);
+  int i = (strncmp(str, str2, 100) == 0);
+  free(str2);
+  return i;
 }
 
 int cli_push(StudentList* sl, int* sl_length)
@@ -55,7 +57,7 @@ int cli_length(int* sl_length)
 
 int cli_delete_all(StudentList* sl, int* sl_length)
 {
-  destroyList(sl);
+  destroyList(&sl);
   *sl_length = 0;
   return 0;
 }
@@ -108,7 +110,7 @@ int cli_sort_martikel(StudentList* sl)
 void print_possible_functions()
 {
   printf("What function do you want to run?\n");
-  printf("PUSH, UNSHIFT, PRINT_ALL, LENGTH, DELETE, DELETE_ALL, FIND_ID, QUERY, SORT_MATRIKEL, SORT_STUDIENGANG, QUIT\n");
+  printf("PUSH, UNSHIFT, PRINT_ALL, LENGTH, DELETE, DELETE_ALL, FIND_ID, QUERY, SORT_MARTRIKEL, SORT_STUDIENGANG, QUIT\n");
 }
 
 int cli_function(char str[], StudentList* sl, int* sl_length)

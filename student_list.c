@@ -45,9 +45,9 @@ int length (StudentList* sl)
 }
 
 
-void destroyList (StudentList* sl)
+void destroyList (StudentList** sl)
 {
-  StudentList* node = sl->next;
+  StudentList* node = (*sl)->next;
   while (node->next != NULL)
   {
     StudentList* nOld = node;
@@ -56,7 +56,7 @@ void destroyList (StudentList* sl)
   }
   free(node);
   StudentList* sl2 = initStudentList();
-  sl = sl2;
+  *sl = sl2;
 }
 
 

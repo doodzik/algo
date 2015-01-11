@@ -101,14 +101,12 @@ void sortMatrikel(StudentList* sl)
     StudentList* min;
 
     // after each iteration shift the list List (f x:xs = xs)
-    for (i = sl->next; i != 0L; i=i->next) {
+    for (i = sl; i->next->next != 0L; i=i->next) {
         min = 0L;
         // iterate over the tail (xs)
-        for (j=i->next; j != 0L; j = j->next) {
+        for (j=i->next; j->next != 0L; j = j->next)
             // get the smalles element in the tail and assign it to min
-            if (min==0L||i->student->id < min->student->id)
-                min = j;
-        }
+            if (min==0L || i->student->id < min->student->id) min = j;
         // swap the smallest element with the tails head
         swapStudents(sl, min, i);
     }
@@ -123,7 +121,7 @@ void sortStudiengang(StudentList* sl)
     do {
         swaped = 0;
         // move window one field to the right
-        for (i = sl->next; i != 0L; i=i->next) {
+        for (i = sl; i->next->next != 0L; i=i->next) {
             // if two fields in window are (right > left) swap them
             if (i->student->subject > i->next->student->subject) {
                 swapStudents(sl, i, i->next);

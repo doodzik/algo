@@ -28,7 +28,7 @@ void printStudentList  (StudentList* sl);
 Student* studentFindById(StudentList* sl, int s_id);
 int length (StudentList* sl);
 int destroy (StudentList* sl, int stundent_id);
-void destroyList (StudentList* sl);
+void destroyList (StudentList** sl);
 void sortMatrikel(StudentList* sl);
 void sortStudiengang(StudentList* sl);
 void swapStudents(StudentList* sl, StudentList* prev, StudentList* next);
