@@ -102,13 +102,14 @@ int matchesString(char* str, char* strToCmpr)
 {
     if(strToCmpr == 0L) return true;
     if(strToCmpr[0] == '\0') return true;
-    if(strstr(str, strToCmpr)==0L) return true;
+    if(strstr(str, strToCmpr) != 0L) return true;
     return false;
 }
 
 int matchesInt(int intTarget, int intToCmpr)
 {
   if (intToCmpr == 0L) return true;
+  if (intToCmpr == 0) return true;
   char str[15];
   sprintf(str, "%d", intTarget);
   char strToCmpr[15];
@@ -119,9 +120,9 @@ int matchesInt(int intTarget, int intToCmpr)
 int matchesStudent(Student* s, Student* s2)
 {
     if(matchesString(s->lastName, s2->lastName)
-        && matchesString(s->firstName, s2->firstName)
-        && matchesInt(s->id, s2->id)
-        && (s2->subject == 0L || s2->subject == 0 || s->subject == s2->subject))
+       && matchesString(s->firstName, s2->firstName)
+       && matchesInt(s->id, s2->id)
+       && (s2->subject == 0L || s2->subject == 0 || s->subject == s2->subject))
         return true;
     else
         return false;
