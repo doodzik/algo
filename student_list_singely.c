@@ -65,19 +65,10 @@ int destroy (StudentList* sl, int stundent_id)
 
 void swapStudents(StudentList* sl, StudentList* prev, StudentList* next)
 {
-    StudentList* i;
-    StudentList* next1 = next->next;
-    StudentList* prev1 = prev->next;
+    Student* tmp = prev->student;
+    prev->student = next->student;
+    next->student = tmp;
 
-    next->next = prev1;
-    prev->next = next1;
-
-    for (i = sl->next; i->next->next != 0L; i=i->next) {
-        if(i->next == prev){
-            i->next = next;
-            break;
-        }
-    }
 }
 
 // TODO remove prevPrev && next
@@ -87,7 +78,6 @@ void swapStudentsWithPrev(StudentList* prevPrev, StudentList* prev, StudentList*
     Student* tmp = prev->student;
     prev->student = prev->next->student;
     prev->next->student = tmp;
-    
 }
 
 
@@ -95,18 +85,22 @@ void sortMatrikel(StudentList* sl)
 {
     //Selection
     StudentList* j;
-    StudentList* i;
+    StudentList* i = sl;
     StudentList* min;
 
     // after each iteration shift the list List (f x:xs = xs)
-    for (i = sl; i->next->next != 0L; i=i->next) {
-        min = 0L;
+    while(i->next->next != 0L) {
+        i=i->next;
+        min = i;
+        j = i;
         // iterate over the tail (xs)
-        for (j=i->next; j->next != 0L; j = j->next)
+        while (j->student != 0L){
             // get the smalles element in the tail and assign it to min
-            if (min==0L || i->student->id < min->student->id) min = j;
+            if (j->student->id < min->student->id) min = j;
+            j = j->next;
+        }
         // swap the smallest element with the tails head
-        swapStudents(sl, min, i);
+        if(min != i) swapStudents(sl, min, i);
     }
 }
 
