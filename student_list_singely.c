@@ -63,23 +63,14 @@ int destroy (StudentList* sl, int stundent_id)
     return 0;
 }
 
+// TODO merge into student_list
+// TODO remove sl
 void swapStudents(StudentList* sl, StudentList* prev, StudentList* next)
 {
     Student* tmp = prev->student;
     prev->student = next->student;
     next->student = tmp;
-
 }
-
-// TODO remove prevPrev && next
-// TODO merge into student_list
-void swapStudentsWithPrev(StudentList* prevPrev, StudentList* prev, StudentList* next)
-{
-    Student* tmp = prev->student;
-    prev->student = prev->next->student;
-    prev->next->student = tmp;
-}
-
 
 void sortMatrikel(StudentList* sl)
 {
@@ -108,19 +99,16 @@ void sortStudiengang(StudentList* sl)
 {
     //Bubble
     StudentList* i = sl;
-    StudentList* prev;
     int swaped;
     // iterate until nothing was swaped in one run
     do {
         swaped = false;
         // move window one field to the right
-        while (i->next->next != 0L) {
-            prev = i;
+        while (i->next->next->student != 0L) {
             i=i->next;
-            // if two fields in window are (right > left) swap them
-            if (i->next->student == 0L) break;
+            // if two fields in window are (right > left) swap
             if (i->student->subject > i->next->student->subject) {
-                swapStudentsWithPrev(prev, i, i->next);
+                swapStudents(sl, i, i->next);
                 swaped = true;
             }
         }
