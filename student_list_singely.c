@@ -12,6 +12,7 @@
 #include <string.h>
 #include "student.h"
 #include "student_list_singely.h"
+typedef enum { false, true } bool;
 
 
 StudentList* initStudentList ()
@@ -35,8 +36,6 @@ void push (StudentList* sl, Student* s)
         node = node->next;
     }
     node->next = nNew;
-    //while (node->next->next != NULL)
-    //  node = node->next;
 }
 
 void unshift (StudentList* sl, Student* s)
@@ -119,16 +118,16 @@ void sortStudiengang(StudentList* sl)
     int swaped;
     // iterate until nothing was swaped in one run
     do {
-        swaped = 0;
+        swaped = false;
         // move window one field to the right
         for (i = sl; i->next->next != 0L; i=i->next) {
             // if two fields in window are (right > left) swap them
             if (i->student->subject > i->next->student->subject) {
-                swapStudents(sl, i, i->next);
-                swaped = 1;
+                swapStudentsWithPrev(sl, i, i->next);
+                swaped = true;
             }
         }
-    } while (swaped);
+    } while (true);
 }
 
 #endif /* DOUBLE_LINKED_LIST */

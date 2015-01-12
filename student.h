@@ -38,21 +38,21 @@ int subjectByName(char name[]);
 /* DEFINE_END SUBJECT ENUM */
 
 struct student {
-    char *firstName;
-    char *lastName;
+    char firstName[100];
+    char lastName[100];
     int id;
     Subject subject;
 };
 typedef struct student Student;
 
 Student* newStudent (char firstName[], char lastName[], char subject[], int id);
-Student* newStudentCli ();
+Student* newStudentCli();
+Student* newStudentCliWithoutNullCheck();
 void printStudent (Student* s);
 void printSubjects();
 
 int matchesString(char str[], char strToCmpr[]);
 int matchesInt(int intTarget, int intToCmpr);
-int matchesEnum(Subject subject, char subjectToCmpr[]);
-int matchesStudent(Student* s, char lastName[], char firstName[], int student_id, char subject[]);
+int matchesStudent(Student* s, Student* s2);
 
 #endif /* defined(__algo1__student__) */

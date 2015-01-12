@@ -27,19 +27,28 @@ int is_function(char function[], char str[])
 
 int cli_push(StudentList* sl, int* sl_length)
 {
-  Student* s = newStudentCli();
-  // TODO get to know why lastName is empty
-  push(sl, s);
-  ++*sl_length;
-  return 0;
+    Student* s = newStudentCli();
+    // TODO get to know why lastName is empty
+    if (s == 0L) {
+        printf("please varify your input\n");
+    }else{
+        push(sl, s);
+        ++*sl_length;
+    }
+    return 0;
 }
 
 int cli_unshift(StudentList* sl, int* sl_length)
 {
-  // TODO: unshift to return status code
-  unshift(sl, newStudentCli());
-  ++*sl_length;
-  return 0;
+    // TODO: unshift to return status code
+    Student* s = newStudentCli();
+    if (s == 0L) {
+        printf("please varify your input\n");
+    }else{
+        unshift(sl, s);
+        ++*sl_length;
+    }
+    return 0;
 }
 
 int cli_print_all(StudentList* sl)
@@ -89,10 +98,9 @@ int cli_find_id(StudentList* sl)
 
 int cli_query(StudentList* sl)
 {
-  return 1;
-  // printSubjects();
-  /*     // (i) Implementieren Sie Funktionalität zum Suchen eines oder mehrerer Studenten nach Vor- und */
-  /*     // Nachname, Matrikelnummer und Studiengang. */
+    Student* s = newStudentCliWithoutNullCheck();
+    queryStudentList(sl, s);
+    return 0;
 }
 
 int cli_sort_studiengang(StudentList* sl)

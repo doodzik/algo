@@ -60,15 +60,18 @@ void destroyList (StudentList** sl)
 }
 
 
-StudentList* queryStudentList(StudentList* sl, char lastName[], char firstName[], int student_id, char subject[])
+StudentList* queryStudentList(StudentList* sl, Student* s)
 {
-    StudentList* newSL = initStudentList();
-    StudentList* i;
-    for (i = sl->next; i != 0L; i=i->next) {
-        if(matchesStudent(i->student ,lastName, firstName, student_id, subject)) {
-            push(newSL, i->student);
+    StudentList* node = sl->next;
+    while (node->next != NULL)
+    {
+        if(matchesStudent(node->student ,s)) {
+            printf("------\n");
+            printStudent(node->student);
         }
+        node = node->next;
     }
-    return newSL;
+    printf("------\n");
+    return 0L;
 }
 
