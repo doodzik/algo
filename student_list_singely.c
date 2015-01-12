@@ -70,10 +70,9 @@ void swapStudents(StudentList* sl, StudentList* prev, StudentList* next)
     StudentList* prev1 = prev->next;
 
     next->next = prev1;
-
     prev->next = next1;
 
-    for (i = sl->next; i->next != 0L; i=i->next) {
+    for (i = sl->next; i->next->next != 0L; i=i->next) {
         if(i->next == prev){
             i->next = next;
             break;
@@ -81,16 +80,16 @@ void swapStudents(StudentList* sl, StudentList* prev, StudentList* next)
     }
 }
 
+// TODO remove prevPrev && next
+// TODO merge into student_list
 void swapStudentsWithPrev(StudentList* prevPrev, StudentList* prev, StudentList* next)
 {
-    StudentList* nextNext = next->next;
-    StudentList* prevNext = prev->next;
-
-    next->next = prevNext;
-
-    prev->next = nextNext;
-    prevPrev->next = next;
+    Student* tmp = prev->student;
+    prev->student = prev->next->student;
+    prev->next->student = tmp;
+    
 }
+
 
 void sortMatrikel(StudentList* sl)
 {
@@ -114,20 +113,24 @@ void sortMatrikel(StudentList* sl)
 void sortStudiengang(StudentList* sl)
 {
     //Bubble
-    StudentList* i;
+    StudentList* i = sl;
+    StudentList* prev;
     int swaped;
     // iterate until nothing was swaped in one run
     do {
         swaped = false;
         // move window one field to the right
-        for (i = sl; i->next->next != 0L; i=i->next) {
+        while (i->next->next != 0L) {
+            prev = i;
+            i=i->next;
             // if two fields in window are (right > left) swap them
+            if (i->next->student == 0L) break;
             if (i->student->subject > i->next->student->subject) {
-                swapStudentsWithPrev(sl, i, i->next);
+                swapStudentsWithPrev(prev, i, i->next);
                 swaped = true;
             }
         }
-    } while (true);
+    } while (swaped);
 }
 
 #endif /* DOUBLE_LINKED_LIST */
