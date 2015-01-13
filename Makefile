@@ -1,5 +1,5 @@
 CC=gcc
-OPTIONS=-g -Wall
+OPTIONS=-g -Wall --std=c99
 TARGET=main
 DEFINE=-D DOUBLE_LINKED_LIST
 
@@ -9,7 +9,7 @@ DOCCONFIG=doxygen.config
 FORMATPROGRAM=astyle
 
 MEMCHECKPRGRAM=valgrind 
-MEMCHECKPARAMETERS=--tool=memcheck 
+MEMCHECKPARAMETERS=--tool=memcheck --leak-check=full --track-origins=yes
 
 all: *.c
 	$(CC) *.c -o $(TARGET) $(OPTIONS)

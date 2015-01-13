@@ -11,15 +11,16 @@
 
 int main(int argc, const char * argv[])
 {
-  char str[100];
-  StudentList* sl = initStudentList();
-  int iSlLength = 0;
-  int* sl_length = &iSlLength;
-  while(1)
-  {
-    print_possible_functions();
-    fgets(str, sizeof(str), stdin);
-    if(cli_function(str, sl, sl_length)) break;
-  }
-  return 0;
+    char str[100];
+    StudentList* sl = initStudentList();
+    int iSlLength = 0;
+    int* sl_length = &iSlLength;
+    while(true)
+    {
+      print_possible_functions();
+      fgets(str, sizeof(str), stdin);
+      if(cli_function(str, sl, sl_length)) break;
+    }
+    free(sl);
+    return 0;
 }
