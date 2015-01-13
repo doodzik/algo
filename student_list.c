@@ -44,22 +44,6 @@ int length (StudentList* sl)
   return i;
 }
 
-
-void destroyList (StudentList** sl)
-{
-  StudentList* node = (*sl)->next;
-  while (node->next != NULL)
-  {
-    StudentList* nOld = node;
-    node = node->next;
-    free(nOld);
-  }
-  free(node);
-  StudentList* sl2 = initStudentList();
-  *sl = sl2;
-}
-
-
 StudentList* queryStudentList(StudentList* sl, Student* s)
 {
     StudentList* node = sl->next;
@@ -75,3 +59,54 @@ StudentList* queryStudentList(StudentList* sl, Student* s)
     return 0L;
 }
 
+// TODO merge into student_list
+// TODO remove sl
+void swapStudents(StudentList* sl, StudentList* prev, StudentList* next)
+{
+    Student* tmp = prev->student;
+    prev->student = next->student;
+    next->student = tmp;
+}
+
+void sortMatrikel(StudentList* sl)
+{
+    //Selection
+    StudentList* j;
+    StudentList* i = sl;
+    StudentList* min;
+    
+    // after each iteration shift the list List (f x:xs = xs)
+    while(i->next->next != 0L) {
+        i=i->next;
+        min = i;
+        j = i;
+        // iterate over the tail (xs)
+        while (j->student != 0L){
+            // get the smalles element in the tail and assign it to min
+            if (j->student->id < min->student->id) min = j;
+            j = j->next;
+        }
+        // swap the smallest element with the tails head
+        if(min != i) swapStudents(sl, min, i);
+    }
+}
+
+void sortStudiengang(StudentList* sl)
+{
+    //Bubble
+    StudentList* i = sl;
+    int swaped;
+    // iterate until nothing was swaped in one run
+    do {
+        swaped = false;
+        // move window one field to the right
+        while (i->next->next->student != 0L) {
+            i=i->next;
+            // if two fields in window are (right > left) swap
+            if (i->student->subject > i->next->student->subject) {
+                swapStudents(sl, i, i->next);
+                swaped = true;
+            }
+        }
+    } while (swaped);
+}

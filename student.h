@@ -37,6 +37,8 @@ int subjectByName(char name[]);
 
 /* DEFINE_END SUBJECT ENUM */
 
+typedef enum { false, true } bool;
+
 struct student {
     char firstName[100];
     char lastName[100];

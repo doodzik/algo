@@ -8,7 +8,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "student.h"
-typedef enum { false, true } bool;
 
 Student* newStudent (char firstName[], char lastName[], char subject[], int id)
 {
@@ -53,6 +52,7 @@ Student* newStudentCli ()
 
 Student* newStudentCliWithoutNullCheck ()
 {
+    // TODO refactor with above function
     char firstName[100];
     char lastName[100];
     char subject[100];

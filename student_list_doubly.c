@@ -68,56 +68,20 @@ int destroy (StudentList* sl, int stundent_id)
   return 0;
 }
 
-void swapStudents(StudentList* sl, StudentList* prev, StudentList* next)
+void destroyList (StudentList** sl)
 {
-  StudentList* nextNext = next->next;
-  StudentList* prevPrev = prev->previous;
-
-  next->next = prev;
-  prev->previous = next;
-
-  next->previous = prevPrev;
-  prev->next = nextNext;
-
-  prevPrev->next = next;
-  nextNext->previous = prev;
-}
-
-void sortMatrikel(StudentList* sl)
-{
-  //Selection
-  StudentList* j;
-  StudentList* i;
-  StudentList* min;
-
-  // after each iteration shift the list List (f x:xs = xs)
-  for (i = sl->next; i != 0L; i=i->next) {
-    min = 0L;
-    // iterate over the tail (xs)
-    for (j=i->next; j != 0L; j = j->next) {
-      // get the smalles element in the tail and assign it to min
-      if (min==0L||i->student->id < min->student->id)
-        min = j;
+    StudentList* node = (*sl)->next;
+    StudentList* nOld;
+    while (node->next != NULL)
+    {
+        nOld = node;
+        node = node->next;
+        free(nOld->student);
+        free(nOld);
     }
-    // swap the smallest element with the tails head
-    swapStudents(min, i, min->previous);
-  }
-}
-
-void sortStudiengang(StudentList* sl)
-{
-  //Bubble
-  StudentList* i;
-  int swaped;
-  do {
-    swaped = 0;
-    for (i = sl->next; i != 0L; i=i->next) {
-      if (i->student->subject > i->next->student->subject) {
-        swapStudents(i, i->next, i->previous);
-        swaped = 1;
-      }
-    }
-  } while (swaped);
+    free(node);
+    (*sl)->next = (*sl)->sentientEnd;
+    (*sl)->sentientEnd->previous = *sl;
 }
 
 #endif /* DOUBLE_LINKED_LIST */

@@ -13,6 +13,7 @@
 #include "student.h"
 
 typedef struct studentList StudentList;
+
 #ifdef DOUBLE_LINKED_LIST
 #include "student_list_doubly.h"
 #else
