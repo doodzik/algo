@@ -35,4 +35,6 @@ algo1.xcodeproj
 main
 main.dSYM
 main.dSYM/*
+latex/
+html/
 *.swp

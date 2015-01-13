@@ -15,6 +15,11 @@
 #include <stdio.h>
 #include "student.h"
 
+/**
+ * @brief structure for singlely linked student list
+ *
+ * @todo make it generic
+ */
 struct studentList {
   Student* student;
   StudentList* next;

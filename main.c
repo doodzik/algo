@@ -1,7 +1,9 @@
-//
-//  main.c
-//
-// Author Frederik Dudzik
+/** @file main.c
+ *  @brief initializes values and starts cli application
+ *
+ *  @author Frederik Dudzik (doodzik)
+ *  @bug No know bugs.
+ */
 
 #include <stdlib.h>
 #include <stdio.h>

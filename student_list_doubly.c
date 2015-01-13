@@ -9,6 +9,12 @@
 #include "student_list.h"
 
 #ifdef DOUBLE_LINKED_LIST
+/** @file student_list_doubly.c
+ *  @brief implementation of student_list.h for api that is between doubly and singlely linked list for doubly
+ *
+ *  @author Frederik Dudzik (doodzik)
+ *  @bug No know bugs.
+ */
 
 #include <stdlib.h>
 #include <string.h>

@@ -1,10 +1,10 @@
-//
-//  list.c
-//  algo1
-//
-//  Created by Frederik Dudzik on 14.12.14.
-//  Copyright (c) 2014 Frederik Dudzik. All rights reserved.
-//
+/** @file student_list.c
+ *  @brief implementation of student_list.h for api that is shared between doubly and singlely linked list
+ *
+ *  @author Frederik Dudzik (doodzik)
+ *  @bug No know bugs.
+ */
+
 #include <stdlib.h>
 #include <string.h>
 #include "student.h"
@@ -59,9 +59,7 @@ StudentList* queryStudentList(StudentList* sl, Student* s)
     return 0L;
 }
 
-// TODO merge into student_list
-// TODO remove sl
-void swapStudents(StudentList* sl, StudentList* prev, StudentList* next)
+void swapStudents(StudentList* prev, StudentList* next)
 {
     Student* tmp = prev->student;
     prev->student = next->student;
@@ -87,7 +85,7 @@ void sortMatrikel(StudentList* sl)
             j = j->next;
         }
         // swap the smallest element with the tails head
-        if(min != i) swapStudents(sl, min, i);
+        if(min != i) swapStudents(min, i);
     }
 }
 
@@ -104,7 +102,7 @@ void sortStudiengang(StudentList* sl)
             i=i->next;
             // if two fields in window are (right > left) swap
             if (i->student->subject > i->next->student->subject) {
-                swapStudents(sl, i, i->next);
+                swapStudents(i, i->next);
                 swaped = true;
             }
         }

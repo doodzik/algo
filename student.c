@@ -1,10 +1,10 @@
-//
-//  student.c
-//  algo1
-//
-//  Created by Frederik Dudzik on 14.12.14.
-//  Copyright (c) 2014 Frederik Dudzik. All rights reserved.
-//
+/** @file student.c
+ *  @brief implements student.h
+ *
+ *  @author Frederik Dudzik (doodzik)
+ *  @bug No know bugs.
+ */
+
 #include <stdlib.h>
 #include <string.h>
 #include "student.h"
@@ -98,7 +98,7 @@ void printStudent (Student* s)
     printf("Student Id: %d\n", s->id);
 }
 
-int matchesString(char* str, char* strToCmpr)
+bool matchesString(char* str, char* strToCmpr)
 {
     if(strToCmpr == 0L) return true;
     if(strToCmpr[0] == '\0') return true;
@@ -106,7 +106,7 @@ int matchesString(char* str, char* strToCmpr)
     return false;
 }
 
-int matchesInt(int intTarget, int intToCmpr)
+bool matchesInt(int intTarget, int intToCmpr)
 {
   if (intToCmpr == 0L) return true;
   if (intToCmpr == 0) return true;
@@ -117,7 +117,7 @@ int matchesInt(int intTarget, int intToCmpr)
   return matchesString(str, strToCmpr);
 }
 
-int matchesStudent(Student* s, Student* s2)
+bool matchesStudent(Student* s, Student* s2)
 {
     if(matchesString(s->lastName, s2->lastName)
        && matchesString(s->firstName, s2->firstName)

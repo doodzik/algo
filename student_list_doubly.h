@@ -1,10 +1,9 @@
-//
-//  student_list_doubly.h
-//  algo1
-//
-//  Created by Frederik Dudzik on 15.12.14.
-//  Copyright (c) 2014 Frederik Dudzik. All rights reserved.
-//
+/** @file student_list_doubly.h
+ *  @brief implements linked list doubly structure
+ *
+ *  @author Frederik Dudzik (doodzik)
+ *  @bug No know bugs.
+ */
 
 #ifndef __algo1__student_list_doubly__
 #define __algo1__student_list_doubly__
@@ -16,6 +15,11 @@
 #include <stdio.h>
 #include "student.h"
 
+/**
+ * @brief structure for doubly linked student list
+ *
+ * @todo make it generic
+ */
 struct studentList {
     Student* student;
     StudentList* next;

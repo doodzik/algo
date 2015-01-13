@@ -1,10 +1,10 @@
-//
-//  list.c
-//  algo1
-//
-//  Created by Frederik Dudzik on 14.12.14.
-//  Copyright (c) 2014 Frederik Dudzik. All rights reserved.
-//
+/** @file student_list_singely.h
+ *  @brief implements linked list sinely structure
+ *
+ *  @author Frederik Dudzik (doodzik)
+ *  @bug No know bugs.
+ */
+
 #include "student_list.h"
 #ifndef DOUBLE_LINKED_LIST
 
@@ -66,7 +66,7 @@ int destroy (StudentList* sl, int stundent_id)
 void destroyList (StudentList** sl)
 {
     StudentList* node = (*sl)->next;
-    StudentList* nOld = (StudentList*) malloc(sizeof(StudentList));
+    StudentList* nOld = 0L;
     while (node->next->next != NULL)
     {
         nOld = node;

@@ -26,13 +26,13 @@ clean:
 mem:
 	$(MEMCHECKPRGRAM) $(MEMCHECKPARAMETERS) ./$(TARGET) $(TESTARGUMENTS)
 
-doc:	*.c
+doc:	*.h
 	$(DOC) $(DOCCONFIG) $(TARGET)
 
 doc-gen-config-file:
 	$(DOC) -g $(DOCCONFIG)
 
-format: *.c
+format: *.h
 	$(FORMATPROGRAM) $(TARGET)
 
 doc-clean:

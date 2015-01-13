@@ -1,4 +1,9 @@
-// author Frederik Dudzik
+/** @file cli.c
+ *  @brief implementation of cli.h
+ *
+ *  @author Frederik Dudzik (doodzik)
+ *  @bug No known bugs.
+ */
 
 #include <stdio.h>
 #include <stdlib.h>
