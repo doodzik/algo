@@ -55,6 +55,7 @@ int destroy (StudentList* sl, int stundent_id)
         if (node->student->id == stundent_id) {
             lastNode->next = node->next;
             free(node->student);
+            free(lastNode);
             return 0;
         }
         lastNode = node;
@@ -65,15 +66,14 @@ int destroy (StudentList* sl, int stundent_id)
 void destroyList (StudentList** sl)
 {
     StudentList* node = (*sl)->next;
-    StudentList* nOld;
-    while (node->next != NULL)
+    StudentList* nOld = (StudentList*) malloc(sizeof(StudentList));
+    while (node->next->next != NULL)
     {
         nOld = node;
         node = node->next;
         free(nOld->student);
         free(nOld);
     }
-    free(node);
     (*sl)->next = (*sl)->sentientEnd;
 }
 

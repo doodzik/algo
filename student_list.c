@@ -71,15 +71,15 @@ void swapStudents(StudentList* sl, StudentList* prev, StudentList* next)
 void sortMatrikel(StudentList* sl)
 {
     //Selection
-    StudentList* j;
-    StudentList* i = sl;
-    StudentList* min;
+    StudentList* j   = 0L;
+    StudentList* min = 0L;
+    StudentList* i   = sl;
     
     // after each iteration shift the list List (f x:xs = xs)
     while(i->next->next != 0L) {
-        i=i->next;
+        i   =i->next;
         min = i;
-        j = i;
+        j   = i;
         // iterate over the tail (xs)
         while (j->student != 0L){
             // get the smalles element in the tail and assign it to min
@@ -95,7 +95,7 @@ void sortStudiengang(StudentList* sl)
 {
     //Bubble
     StudentList* i = sl;
-    int swaped;
+    int swaped = false;
     // iterate until nothing was swaped in one run
     do {
         swaped = false;
