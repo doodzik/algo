@@ -72,7 +72,7 @@ void sortMatrikel(StudentList* sl)
     StudentList* j   = 0L;
     StudentList* min = 0L;
     StudentList* i   = sl;
-    
+
     // after each iteration shift the list List (f x:xs = xs)
     while(i->next->next != 0L) {
         i   =i->next;

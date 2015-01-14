@@ -1,20 +1,13 @@
-//
-//  student_list_doubly.c
-//  algo1
-//
-//  Created by Frederik Dudzik on 15.12.14.
-//  Copyright (c) 2014 Frederik Dudzik. All rights reserved.
-//
-
-#include "student_list.h"
-
-#ifdef DOUBLE_LINKED_LIST
 /** @file student_list_doubly.c
  *  @brief implementation of student_list.h for api that is between doubly and singlely linked list for doubly
  *
  *  @author Frederik Dudzik (doodzik)
  *  @bug No know bugs.
  */
+
+#include "student_list.h"
+
+#ifdef DOUBLE_LINKED_LIST
 
 #include <stdlib.h>
 #include <string.h>
@@ -77,13 +70,11 @@ int destroy (StudentList* sl, int stundent_id)
 void destroyList (StudentList** sl)
 {
     StudentList* node = (*sl)->next;
-    StudentList* nOld;
-    while (node->next != NULL)
+    while (node->next->next != NULL)
     {
-        nOld = node;
         node = node->next;
-        free(nOld->student);
-        free(nOld);
+        free(node->previous->student);
+        free(node->previous);
     }
     free(node);
     (*sl)->next = (*sl)->sentientEnd;

@@ -85,12 +85,16 @@ void destroyList (StudentList** sl);
 
 /** @brief sorts the list by student_id
  *
+ *   Selectionsort O(n^2) Ω(n^2)
+ *
  *  @param sl Head of the list(StudentList)
  *  @return Void.
  */
 void sortMatrikel(StudentList* sl);
 
 /** @brief sorts the list by student subject
+ *
+ *   Bubblesort O(n^2) Ω(n^2)
  *
  *  @param sl Head of the list(StudentList)
  *  @return Void.
@@ -107,7 +111,7 @@ void swapStudents(StudentList* prev, StudentList* next);
 
 /** @brief queries the student list by student
  *
- *  @param sl Head of the list(StudentList) 
+ *  @param sl Head of the list(StudentList)
  *  @param s  student to query against
  *  @return StudentList*
  */

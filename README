@@ -1,0 +1,97 @@
+\documentclass{article}
+\usepackage{fixltx2e}
+\usepackage{listings}
+\begin{document}
+
+\chapter{Losungsbuch}
+
+In main werden die daten initialisiet und das programm immer wieder von vorne ausgefuhrt bis der nutzer das programm mit dem "QUIT" commando schliesst oder mit <c-c>.
+
+
+\chapter{3}
+   effizienter:
+   (b) zum Hinzufügen eines Elements vor dem ersten Element.
+   (a) Erstellen eines neuen Elements.
+   (g) Löschen eines Elements.
+
+   ineffizienter:
+   (c) Hinzufügen eines Elements nach dem letzten Element.
+    
+\section{b}
+Wir mussen keine verbindung zu vorherigen element setzten.
+Dadurch spare ich 6 operationen.
+
+\section{a}
+Wir mussen keine verbindung zu vorherigen element setzten.
+Dadurch spare ich 4 operationen.
+
+\section{g}
+Wir mussen keine verbindung zu vorherigen element setzten.
+Dadurch spare ich 2 operationen.
+
+\section{c}
+Wir mussen die Liste einmal durchlaufen um ein element am ende hinzuzufugen O(n).
+Bei einer Doppeltverketteten Liste ist es O(1), da wir uber den end Listenkopf direkt darauf zugreifen konnen.
+
+\chapter{5}
+
+\section{ Meine Implementierung }
+# mein implementierung
+
+\begin{lstlisting}
+// -> check if this means a access
+void swapStudents(StudentList* prev, StudentList* next)
+{
+    Student* tmp = prev->student;//1
+    prev->student = next->student;//2
+    next->student = tmp;//3
+}
+\end{lstlisting}
+
+\begin{lstlisting}
+void sortMatrikel(StudentList* sl)
+{
+    StudentList* j   = 0L; //1
+    StudentList* min = 0L; //2
+    StudentList* i   = sl; //3
+    while(i->next->next != 0L) { // 4+n
+        i   =i->next; //5+n
+        min = i; //6+n
+        j   = i; //7+n
+        while (j->student != 0L){ // 8+n^2
+            if (j->student->id < min->student->id) min = j; //10+n^2 | 9+n^2
+            j = j->next; //10+n^2
+        }
+        if(min != i) swapStudents(min, i);//13+n^2 | 9+n^2
+    }
+}
+//O(n^2) Ω(n^2)
+\end{lstlisting}
+
+\begin{lstlisting}
+void sortStudiengang(StudentList* sl)
+{
+    StudentList* i = sl; //1
+    int swaped = false; //2
+    do {
+        swaped = false; //3
+        while (i->next->next->student != 0L) {//4 + n
+            i=i->next; // 5 + n
+            if (i->student->subject > i->next->student->subject) { // 6+n
+                swapStudents(i, i->next); // 7 + n |
+                swaped = true; // 8 + n |
+            }
+        }
+    } while (swaped); // 9 + n^2 | 6 + n
+}
+//O(n^2) Ω(n)
+\end{lstlisting}
+
+\section{Allgemein}
+Ehrlich gesagt denke ich nicht das ich das machen muss da diese fast identisch mit meiner implementation sind. Wozu zweimal die gleiche arbeit machen.
+
+\section{Begrundung der Auswahl}
+Die Algorithmen konnen genauso in einer einfach wie doppelt verketteten Liste implementiert ohne einen Komplexitats verlust zu erleiden. Im gegensatz zu Insertion sort zum Beispiel.
+Zudem sind ist die Berechnung der Komplexitat auch einfacher und die Performance in dem Beispiel nicht wirklich relevant.
+
+\end{document}

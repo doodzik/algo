@@ -28,9 +28,6 @@
         SUBJECT(fashion)  \
         SUBJECT(economy)  \
 
-/**
- *
- */
 typedef enum SUBJECT_ENUM {
     FOREACH_SUBJECT(GENERATE_ENUM)
 } Subject;
