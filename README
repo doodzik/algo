@@ -1,12 +1,51 @@
 \documentclass{article}
-\usepackage{fixltx2e}
 \usepackage{listings}
 \begin{document}
 
 \chapter{Losungsbuch}
 
-In main werden die daten initialisiet und das programm immer wieder von vorne ausgefuhrt bis der nutzer das programm mit dem "QUIT" commando schliesst oder mit <c-c>.
+\section{Main}
+In `main` werden die Daten initialisiet und das Programm immer wieder von vorne ausgefuhrt bis der Nutzer das programm schliesst.
+Die eingabe der Befehle erfolgt hier, jedoch werden die Befehle in einer anderen Prozedur interpretiert und ausgefuhrt.
+Das Ziel dahinter ist dass das Programm einfacher zu verstehen ist, da wir die Verantwortung teilen und hinter abstrakteren Prozeduren bundeln.
 
+\section{CLI}
+Die cli.c Prozeduren dienen als ein Adapter zwischen der eigentlichen Logik des Programms und der Ausenwelt.
+Uber die funktion `cli_function` werden die Befehle des Nutzers Interpretiert und die jeweilige adapter Prozedur in cli.c aufgerufen.
+Diese Funktionen gehen sicher dass die fur den gegebenen Befehls notwendigen Prozeduren ausgefuhrt werden.
+Und das diese mit korreckten Daten verwendet werden.
+
+\section{util}
+In der util datei sind hilfreiche Prozeduren gespeichert die in keine der anderen Dateien platzfinden und auch keiner eigenen Datei bedurfen.
+Wenn dies ein groseres Projekt ware hatte ich die Funktionen in eigene Dateien ausgelagernt.
+Da sonst solch eine util Datei ein schwarzes Prozeduren-Loch fur Entwickler werden wurde.
+
+\section{student}
+In student.c sind alle Prozeduren implementiert die die Student Struktur betreffen.
+Das interesannteste in der Datei ist wie ich das Subject Enum defeniere.
+Ich brauche in meinem Code die Subjects einmal als Enum und als String.
+Dafur benutzte ich den Preprozessor damit ich die Subjects nicht zweimal hinschreiben muss und damit sie in der gleichen Reihenfolge sind.
+
+\section{cli_student}
+In cli_student sind adapter Prozeduren fur student. siehe die Sektion CLI.
+
+\section{student_list, doppelt und einfach}
+Das Interface fur die Doppelt wie einfach Verkettete Liste ist bei mir die selbe, weswegen sie sich eine header Datei teilen.
+Diese wird von den anderen Dateien included.
+Damit wir angeben welche Listenform wir verwenden wollen mussen wir beim Kompilieren oder im Code `DOUBLE_LINKED_LIST` defenieren oder undefeniert lassen.
+Daraufhin wird die die jeweilige Listenstruktur und implementation von student_list.h kompeliert.
+
+\section{Makefile}
+Das Makefile ist weitestgehend aus den Unterlagen ubernommen.
+Ich habe dieses ledeglich fur meine Bedurfnisse erweitert.
+
+Wichtig ist das sie mit `make` die einfache student_list kompilieren und mit `make double` die doppelte. 
+
+\section{TODO}
+Ich wurde das Pattern das ich in Main und CLI beschrieben habe strikter durchziehen.
+Z.b. wurde ich in den Prozeduren von cli_student nicht direckt einen Studenten erzeugen sondern das die cli Funktionen machen lassen.
+Zudem wurde ich die Liste als eine generische Implementieren wenn ich ich neu anfangen wurde.
+Ausserdem wurde ich mehr mit Status Codes arbeiten. In der Cli habe ich versucht das zu implementieren. Dies ist jedoch in meinen Augen eher durftig umgesetzt worden.
 
 \chapter{3}
    effizienter:
@@ -31,7 +70,7 @@ Dadurch spare ich 2 operationen.
 
 \section{c}
 Wir mussen die Liste einmal durchlaufen um ein element am ende hinzuzufugen O(n).
-Bei einer Doppeltverketteten Liste ist es O(1), da wir uber den end Listenkopf direkt darauf zugreifen konnen.
+Bei einer Doppeltverketteten Liste ist es O(1), da wir uber den end Listenkopf direkt darauf zugreifen kann.
 
 \chapter{5}
 
