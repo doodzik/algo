@@ -7,14 +7,6 @@
 
 #include "student_list.h"
 
-/** @brief concatinates two strings
- *
- *  @param s1 string1
- *  @param s2 string2 is appended to string1
- *  @return concatinated string
- */
-char* concat(char *s1, char *s2);
-
 /** @brief checks if provided char[] is a cli cmd
  *
  *  @param function 

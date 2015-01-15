@@ -14,6 +14,7 @@
 #define __algo1__student__
 
 #include <stdio.h>
+#include "util.h"
 
 /* DEFINE SUBJECT ENUM */
 #define GENERATE_ENUM(ENUM) ENUM,
@@ -42,11 +43,6 @@ int subjectByName(char name[]);
 
 
 /**
- * define a Boolean Type
- */
-typedef enum { false, true } bool;
-
-/**
  *  structure for a student
  */
 struct student {
@@ -67,20 +63,6 @@ typedef struct student Student;
  */
 Student* newStudent (char firstName[], char lastName[], char subject[], int id);
 
-/** @brief create student from STDIN values
- *
- *    if an empty STDIN was made a null pointer is returned
- *
- *  @return Student*
- */
-Student* newStudentCli();
-
-/** @brief create student from STDIN values without checking if values are empty
- *
- *  @return Student*
- */
-Student* newStudentCliWithoutNullCheck();
-
 /** @brief STDOUT student structure
  *
  *  @return void
@@ -92,22 +74,6 @@ void printStudent (Student* s);
  *  @return void
  */
 void printSubjects();
-
-/** @brief checks if string is in another string
- *    if strToCmpr is empty then it is interpreted as true
- *  @param str
- *  @param strToCmpr
- *  @return void
- */
-bool matchesString(char str[], char strToCmpr[]);
-
-/** @brief checks if int is in another int
- *    if intToCmpr is empty then it is interpreted as true
- *  @param intTarget
- *  @param intToCmpr
- *  @return bool
- */
-bool matchesInt(int intTarget, int intToCmpr);
 
 /** @brief checks if two student matches
  *
