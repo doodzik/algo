@@ -55,7 +55,6 @@ int destroy (StudentList* sl, int stundent_id)
         if (node->student->id == stundent_id) {
             lastNode->next = node->next;
             free(node->student);
-            free(lastNode);
             return 0;
         }
         lastNode = node;

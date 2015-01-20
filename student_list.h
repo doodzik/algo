@@ -18,6 +18,7 @@
 
 typedef struct studentList StudentList;
 
+#define DOUBLE_LINKED_LIST
 #ifdef DOUBLE_LINKED_LIST
 #include "student_list_doubly.h"
 #else

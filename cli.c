@@ -97,6 +97,8 @@ int cli_find_id(StudentList* sl)
 
 int cli_query(StudentList* sl)
 {
+    printf("IF YOU DONT CARE FOR AN ATTRIBUTE JUST CLICK ENTER\n");
+    printf("ALL SPECIFIED VALUES CHECK IF THE STUDENT CONTAINS THE GIVEN VALUE WITHIN ITS VALUE\n\n");
     Student* s = newStudentCliWithoutNullCheck();
     queryStudentList(sl, s);
     return 0;
@@ -116,24 +118,27 @@ int cli_sort_martikel(StudentList* sl)
 
 void print_possible_functions()
 {
-  printf("What function do you want to run?\n");
-  printf("PUSH, UNSHIFT, PRINT_ALL, LENGTH, DELETE, DELETE_ALL, FIND_ID, QUERY, SORT_MARTRIKEL, SORT_STUDIENGANG, QUIT\n");
+    printf("\n");
+    printf("What function do you want to run?\n");
+    printf("PUSH, UNSHIFT, PRINT_ALL, LENGTH, DELETE, DELETE_ALL, FIND_ID, QUERY, SORT_MARTRIKEL, SORT_STUDIENGANG, QUIT\n");
+    printf("\n");
 }
 
 int cli_function(char str[], StudentList* sl, int* sl_length)
 {
-  if(is_function("PUSH", str)) return cli_push(sl, sl_length);
-  if(is_function("UNSHIFT", str)) return cli_unshift(sl, sl_length);
-  if(is_function("PRINT_ALL", str)) return cli_print_all(sl);
-  if(is_function("LENGTH", str)) return cli_length(sl_length);
-  if(is_function("DELETE", str)) return cli_delete(sl, sl_length);
-  if(is_function("DELETE_ALL", str)) return cli_delete_all(sl, sl_length);
-  if(is_function("FIND_ID", str)) return cli_find_id(sl);
-  if(is_function("QUERY", str)) return cli_query(sl);
-  if(is_function("SORT_STUDIENGANG", str)) return cli_sort_studiengang(sl);
-  if(is_function("SORT_MARTRIKEL", str)) return cli_sort_martikel(sl);
-  if(is_function("QUIT", str)) return 1;
+    printf("\n");
+    if(is_function("PUSH", str)) return cli_push(sl, sl_length);
+    if(is_function("UNSHIFT", str)) return cli_unshift(sl, sl_length);
+    if(is_function("PRINT_ALL", str)) return cli_print_all(sl);
+    if(is_function("LENGTH", str)) return cli_length(sl_length);
+    if(is_function("DELETE", str)) return cli_delete(sl, sl_length);
+    if(is_function("DELETE_ALL", str)) return cli_delete_all(sl, sl_length);
+    if(is_function("FIND_ID", str)) return cli_find_id(sl);
+    if(is_function("QUERY", str)) return cli_query(sl);
+    if(is_function("SORT_STUDIENGANG", str)) return cli_sort_studiengang(sl);
+    if(is_function("SORT_MARTRIKEL", str)) return cli_sort_martikel(sl);
+    if(is_function("QUIT", str)) return 1;
 
-  printf("No such Function\n");
-  return 0;
+    printf("No such Function\n");
+    return 0;
 }
