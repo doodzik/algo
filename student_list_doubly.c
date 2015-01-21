@@ -18,12 +18,13 @@ StudentList* initStudentList ()
 {
   StudentList* head = (StudentList*) malloc(sizeof(StudentList));
   StudentList* tail = (StudentList*) malloc(sizeof(StudentList));
-  //if (head == 0L) return EXIT_FAILURE;
   head->previous = 0L;
   tail->next = 0L;
   head->next = tail;
   tail->previous = head;
   head->sentientEnd = tail;
+  head->student = 0L;
+  tail->student = 0L;
   return head;
 }
 
