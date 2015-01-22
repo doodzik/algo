@@ -36,7 +36,7 @@ void initStudentList (StudentList **sl);
  *  @param s  the Data(Student) that has to be unshifted
  *  @return Void.
  */
-void unshift (StudentList* sl, Student* s);
+void unshift (StudentList** sl, Student* s);
 
 /** @brief pushes node to the end of the list
  *
@@ -44,7 +44,7 @@ void unshift (StudentList* sl, Student* s);
  *  @param s  the Data(Student) that has to be pushed
  *  @return Void.
  */
-void push (StudentList* sl, Student* s);
+void push (StudentList** sl, Student* s);
 
 /** @brief Prints the entire Student list to STDOUT
  *
@@ -74,7 +74,7 @@ int length (StudentList* sl);
  *  @param s_id id of the student
  *  @return status code
  */
-int destroy (StudentList* sl, int stundent_id);
+int destroy (StudentList** sl, int stundent_id);
 
 /** @brief removes the whole list
  *

@@ -18,13 +18,13 @@
  *
  *  @return Student*
  */
-Student* newStudentCli();
+Student* newStudentCli(Student ** s);
 
 /** @brief create student from STDIN values without checking if values are empty
  *
  *  @return Student*
  */
-Student* newStudentCliWithoutNullCheck();
+Student* newStudentCliWithoutNullCheck(Student ** s);
 
 
 #endif /* defined(__algAufg__cli_student__) */

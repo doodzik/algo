@@ -61,7 +61,7 @@ typedef struct student Student;
  *  @param id
  *  @return Student*
  */
-Student* newStudent (char firstName[], char lastName[], char subject[], int id);
+Student* newStudent (Student ** s, char firstName[], char lastName[], char subject[], int id);
 
 /** @brief STDOUT student structure
  *

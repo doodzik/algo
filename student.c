@@ -9,19 +9,19 @@
 #include <string.h>
 #include "student.h"
 
-Student* newStudent (char firstName[], char lastName[], char subject[], int id)
+Student* newStudent (Student ** s, char firstName[], char lastName[], char subject[], int id)
 {
     
-    Student* s = (Student*) malloc(sizeof(Student));
+    *s = (Student*) malloc(sizeof(Student));
     char last[100];
     if(lastName != 0L) strcpy(last, lastName);
     char first[100];
     if(lastName != 0L) strcpy(first, firstName);
-    strcpy(s->firstName, first);
-    strcpy(s->lastName, last);
-    s->subject = subjectByName(subject);
-    s->id = id;
-    return s;
+    strcpy((*s)->firstName, first);
+    strcpy((*s)->lastName, last);
+    (*s)->subject = subjectByName(subject);
+    (*s)->id = id;
+    return *s;
 }
 
 void printStudent (Student* s)

@@ -34,28 +34,28 @@ void initStudentList (StudentList **sl)
      */
 }
 
-void push (StudentList* sl, Student* s)
+void push (StudentList** sl, Student* s)
 {
     StudentList* nNew = (StudentList*) malloc(sizeof(StudentList));
-    StudentList* node = sl;
+    StudentList* node = *sl;
     nNew->student = s;
-    nNew->next = sl->sentientEnd;
+    nNew->next = (*sl)->sentientEnd;
     while (node->next->next != 0L)
         node = node->next;
     node->next = nNew;
 }
 
-void unshift (StudentList* sl, Student* s)
+void unshift (StudentList** sl, Student* s)
 {
   StudentList* slNew = (StudentList*) malloc(sizeof(StudentList));
   slNew->student = s;
-  slNew->next = sl->next;
-  sl->next = slNew;
+  slNew->next = (*sl)->next;
+  (*sl)->next = slNew;
 }
 
-int destroy (StudentList* sl, int stundent_id)
+int destroy (StudentList** sl, int stundent_id)
 {
-    StudentList* node = sl;
+    StudentList* node = *sl;
     StudentList* lastNode = node;
     while (node->next->next != 0L)
     {

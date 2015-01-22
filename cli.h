@@ -21,7 +21,7 @@ int is_function(char function[], char str[]);
  *  @param s_length length of the student list
  *  @return status code
  */
-int cli_push(StudentList* sl, int* sl_length);
+int cli_push(StudentList** sl, int* sl_length);
 
 /** @brief runs unshift && inc sl_length
  *
@@ -29,7 +29,7 @@ int cli_push(StudentList* sl, int* sl_length);
  *  @param s_length length of the student list
  *  @return status code
  */
-int cli_unshift(StudentList* sl, int* sl_length);
+int cli_unshift(StudentList** sl, int* sl_length);
 
 /** @brief runs print_students
  *
@@ -51,7 +51,7 @@ int cli_length(int* sl_length);
  *  @param s_length length of the student list
  *  @return status code
  */
-int cli_delete(StudentList* sl, int* sl_length);
+int cli_delete(StudentList** sl, int* sl_length);
 
 /** @brief runs delete_all && sets sl_length to 0
  *
@@ -108,4 +108,4 @@ int cli_get_student_id();
  *  @param s_length length of the student list
  *  @return status code
  */
-int cli_function(char str[], StudentList* sl, int* sl_length);
+int cli_function(char str[], StudentList** sl, int* sl_length);

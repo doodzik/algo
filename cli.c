@@ -24,11 +24,12 @@ int is_function(char function[], char str[])
   return i;
 }
 
-int cli_push(StudentList* sl, int* sl_length)
+int cli_push(StudentList ** sl, int* sl_length)
 {
-    Student* s = newStudentCli();
+    Student *s, *tmp;
+    tmp = newStudentCli(&s);
     // TODO get to know why lastName is empty
-    if (s == 0L) {
+    if (tmp == 0L) {
         printf("please varify your input\n");
     }else{
         push(sl, s);
@@ -37,11 +38,12 @@ int cli_push(StudentList* sl, int* sl_length)
     return 0;
 }
 
-int cli_unshift(StudentList* sl, int* sl_length)
+int cli_unshift(StudentList ** sl, int* sl_length)
 {
     // TODO: unshift to return status code
-    Student* s = newStudentCli();
-    if (s == 0L) {
+    Student *s, *tmp;
+    newStudentCli(&s);
+    if (tmp == 0L) {
         printf("please varify your input\n");
     }else{
         unshift(sl, s);
@@ -82,7 +84,7 @@ int cli_get_student_id()
   return atoi(stundent_id);
 }
 
-int cli_delete(StudentList* sl, int* sl_length)
+int cli_delete(StudentList** sl, int* sl_length)
 {
   int result = destroy(sl, cli_get_student_id());
   *sl_length = *sl_length - result;
@@ -103,7 +105,8 @@ int cli_query(StudentList* sl)
 {
     printf("IF YOU DONT CARE FOR AN ATTRIBUTE JUST CLICK ENTER\n");
     printf("ALL SPECIFIED VALUES CHECK IF THE STUDENT CONTAINS THE GIVEN VALUE WITHIN ITS VALUE\n\n");
-    Student* s = newStudentCliWithoutNullCheck();
+    Student* s, *tmp;
+    tmp = newStudentCliWithoutNullCheck(&s);
     queryStudentList(sl, s);
     return 0;
 }
@@ -128,19 +131,19 @@ void print_possible_functions()
     printf("\n");
 }
 
-int cli_function(char str[], StudentList* sl, int* sl_length)
+int cli_function(char str[], StudentList** sl, int* sl_length)
 {
     printf("\n");
     if(is_function("PUSH", str)) return cli_push(sl, sl_length);
     if(is_function("UNSHIFT", str)) return cli_unshift(sl, sl_length);
-    if(is_function("PRINT_ALL", str)) return cli_print_all(sl);
+    if(is_function("PRINT_ALL", str)) return cli_print_all(*sl);
     if(is_function("LENGTH", str)) return cli_length(sl_length);
     if(is_function("DELETE", str)) return cli_delete(sl, sl_length);
-    if(is_function("DELETE_ALL", str)) return cli_delete_all(sl, sl_length);
-    if(is_function("FIND_ID", str)) return cli_find_id(sl);
-    if(is_function("QUERY", str)) return cli_query(sl);
-    if(is_function("SORT_STUDIENGANG", str)) return cli_sort_studiengang(sl);
-    if(is_function("SORT_MARTRIKEL", str)) return cli_sort_martikel(sl);
+    if(is_function("DELETE_ALL", str)) return cli_delete_all(*sl, sl_length);
+    if(is_function("FIND_ID", str)) return cli_find_id(*sl);
+    if(is_function("QUERY", str)) return cli_query(*sl);
+    if(is_function("SORT_STUDIENGANG", str)) return cli_sort_studiengang(*sl);
+    if(is_function("SORT_MARTRIKEL", str)) return cli_sort_martikel(*sl);
     if(is_function("QUIT", str)) return 1;
 
     printf("No such Function\n");

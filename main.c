@@ -26,7 +26,7 @@ int main(int argc, const char * argv[])
         fgets(str, sizeof(str), stdin);
         size_t strLn = strlen(str) - 1;
         if (str[strLn] != '\n') flushStdin();
-        if(cli_function(str, sl, sl_length)) break;
+        if(cli_function(str, &sl, sl_length)) break;
     }
     if(iSlLength > 0) destroyList(&sl);
     free(sl->next);

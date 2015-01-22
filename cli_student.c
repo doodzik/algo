@@ -12,7 +12,7 @@
 #include "cli_student.h"
 
 
-Student* newStudentCli ()
+Student* newStudentCli (Student** s)
 {
     char firstName[100];
     char lastName[100];
@@ -56,10 +56,10 @@ Student* newStudentCli ()
     int iId = atoi(id);
     if(iId == -1) return 0L;
     
-    return newStudent (firstName, lastName, subject, iId);
+    return newStudent (s, firstName, lastName, subject, iId);
 }
 
-Student* newStudentCliWithoutNullCheck ()
+Student* newStudentCliWithoutNullCheck (Student ** s)
 {
     // TODO refactor with above function
     char firstName[100];
@@ -101,5 +101,5 @@ Student* newStudentCliWithoutNullCheck ()
     int iId = atoi(id);
     if(iId == -1) iId = 0;
     
-    return newStudent (firstName, lastName, subject, iId);
+    return newStudent (s, firstName, lastName, subject, iId);
 }
