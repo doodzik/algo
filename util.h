@@ -16,6 +16,11 @@
  */
 typedef enum { false, true } bool;
 
+/**
+ * empties stdin
+ */
+void flushStdin();
+
 /** @brief concatinates two strings
  *
  *  @param s1 string1

@@ -10,6 +10,11 @@
 #include <string.h>
 #include "util.h"
 
+void flushStdin()
+{
+    int c;
+    while ((c = fgetc(stdin)) != EOF && c != '\n');
+}
 
 char* concat(char *s1, char *s2)
 {

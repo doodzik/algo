@@ -72,9 +72,13 @@ int cli_delete_all(StudentList* sl, int* sl_length)
 
 int cli_get_student_id()
 {
-  char stundent_id[100];
+  char stundent_id[10];
   printf("enter student id:\n");
   fgets(stundent_id, sizeof(stundent_id), stdin);
+  size_t idLn = strlen(stundent_id) - 1;
+  if (stundent_id[idLn] == '\n')
+      stundent_id[idLn] = '\0';
+  else flushStdin();
   return atoi(stundent_id);
 }
 

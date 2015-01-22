@@ -7,6 +7,7 @@
 
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "cli.h"
 #include "student.h"
 #include "student_list.h"
@@ -19,9 +20,13 @@ int main(int argc, const char * argv[])
     int* sl_length = &iSlLength;
     while(true)
     {
-      print_possible_functions();
-      fgets(str, sizeof(str), stdin);
-      if(cli_function(str, sl, sl_length)) break;
+        print_possible_functions();
+        fgets(str, sizeof(str), stdin);
+        size_t strLn = strlen(str) - 1;
+        if (str[strLn] == '\n')
+            str[strLn] = '\0';
+        else flushStdin();
+        if(cli_function(str, sl, sl_length)) break;
     }
     free(sl);
     return 0;
