@@ -14,16 +14,24 @@
 #include "student_list_singely.h"
 
 
-StudentList* initStudentList ()
+void initStudentList (StudentList **sl)
 {
-    StudentList* head = (StudentList*) malloc(sizeof(StudentList));
-    StudentList* tail = (StudentList*) malloc(sizeof(StudentList));
+    *sl = (StudentList*) malloc(sizeof(StudentList));
+    (*sl)->sentientEnd = (StudentList*) malloc(sizeof(StudentList));
+    (*sl)->sentientEnd->next = 0L;
+    (*sl)->next = (*sl)->sentientEnd;
+    (*sl)->student = 0L;
+    (*sl)->sentientEnd->student = 0L;
+    
+    /*
+    StudentList *head = (StudentList*) malloc(sizeof(StudentList));
+    StudentList *tail = (StudentList*) malloc(sizeof(StudentList));
     tail->next = 0L;
     head->next = tail;
     head->sentientEnd = tail;
     head->student = 0L;
     tail->student = 0L;
-    return head;
+     */
 }
 
 void push (StudentList* sl, Student* s)

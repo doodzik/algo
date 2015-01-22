@@ -16,9 +16,10 @@
 int main(int argc, const char * argv[])
 {
     char str[100];
-    StudentList* sl = initStudentList();
+    StudentList *sl;
+    initStudentList(&sl);
     int iSlLength = 0;
-    int* sl_length = &iSlLength;
+    int *sl_length = &iSlLength;
     while(true)
     {
         print_possible_functions();

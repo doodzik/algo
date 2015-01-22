@@ -28,7 +28,7 @@ typedef struct studentList StudentList;
  *
  *  @return StudentList*
  */
-StudentList* initStudentList ();
+void initStudentList (StudentList **sl);
 
 /** @brief pushes node to the top of the list
  *
