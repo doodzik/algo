@@ -75,60 +75,110 @@ Bei einer Doppeltverketteten Liste ist es O(1), da wir uber den end Listenkopf d
 \chapter{5}
 
 \section{ Meine Implementierung }
-# mein implementierung
 
 \begin{lstlisting}
-// -> check if this means a access
 void swapStudents(StudentList* prev, StudentList* next)
 {
-    Student* tmp = prev->student;//1
-    prev->student = next->student;//2
-    next->student = tmp;//3
+    Student* tmp = prev->student;  //2
+    prev->student = next->student; //3
+    next->student = tmp;           //2
 }
+// O(7)
 \end{lstlisting}
 
 \begin{lstlisting}
+//selectionsort
 void sortMatrikel(StudentList* sl)
 {
-    StudentList* j   = 0L; //1
-    StudentList* min = 0L; //2
-    StudentList* i   = sl; //3
-    while(i->next->next != 0L) { // 4+n
-        i   =i->next; //5+n
-        min = i; //6+n
-        j   = i; //7+n
-        while (j->student != 0L){ // 8+n^2
-            if (j->student->id < min->student->id) min = j; //10+n^2 | 9+n^2
-            j = j->next; //10+n^2
-        }
-        if(min != i) swapStudents(min, i);//13+n^2 | 9+n^2
-    }
+    StudentList* j   = 0L;                                  //1
+    StudentList* min = 0L;                                  //1
+    StudentList* i   = sl;                                  //1
+    while(i->next->next != 0L) {                            //3 ---------|
+        i   =i->next;                                       //1          |
+        min = i;                                            //1          |
+        j   = i;                                            //1          |
+        while (j->student != 0L){                           //2 ----|    | 
+            if (j->student->id < min->student->id) min = j; //4/w/5 |    |
+            j = j->next;                                    //2     |n   | n
+        }                                                   //  ----|    |
+        if(min != i) swapStudents(min, i);//13+n^2 | 9+n^2  //7          |
+    }                                                       //  ---------|
 }
-//O(n^2) Ω(n^2)
+/*
+ 1+1+1+n*(3+1+1+1+n*(2+5+2+7)) =>  n*n = O(n^2)
+ 1+1+1+n*(3+1+1+1+n*(2+4+2+7)) =>  n*n = Ω(n^2)
+*/
 \end{lstlisting}
 
 \begin{lstlisting}
+//bubblesort
 void sortStudiengang(StudentList* sl)
 {
-    StudentList* i = sl; //1
-    int swaped = false; //2
-    do {
-        swaped = false; //3
-        while (i->next->next->student != 0L) {//4 + n
-            i=i->next; // 5 + n
-            if (i->student->subject > i->next->student->subject) { // 6+n
-                swapStudents(i, i->next); // 7 + n |
-                swaped = true; // 8 + n |
-            }
-        }
-        i = sl;
-    } while (swaped); // 9 + n^2 | 6 + n
+    StudentList* i = sl;                                          //1
+    int swaped = false;                                           //1
+    do {                                                          /w/ ---------------|
+        swaped = false;                                           //1                |
+        while (i->next->next->student != 0L) {                    //4  ------|       |
+            i=i->next;                                            //2        |       |
+            if (i->student->subject > i->next->student->subject) {//6        |       |
+                swapStudents(i, i->next);                         /w/8       | n     | n -> falls nicht sortiert
+                swaped = true;                                    /w/9       |       |
+            }                                                     //         |       |
+        }                                                         //   ------|       |
+        i = sl;                                                   //1                |
+    } while (swaped);                                             // ----------------|
 }
-//O(n^2) Ω(n)
+/*
+1+1+n*(1+4+n*(2+6+8+9)+1 =>  n*n = O(n^2)
+1+1+(1+4+n*(2+6)+1       =>  n   = Ω(n)
+*/
+
 \end{lstlisting}
 
 \section{Allgemein}
-Ehrlich gesagt denke ich nicht das ich das machen muss da diese fast identisch mit meiner implementation sind. Wozu zweimal die gleiche arbeit machen.
+Bubblesort ist aus "Algorithmen und Datenstrukturen" Auflage 5 von Thomas Ottmann und Peter Widmayer entnommen. 
+Sellectionsort ist aus Donald Knuth's 'The Art of Computer Programming, Volume 3: Sorting and Searching'
+
+\begin{lstlisting}
+//Bubblesort
+procedure bubblesort(var a: sequence);
+  var i: integer;                                 //  1
+  begin                                         
+    repeat                                        /w/ -----------|
+      for i:=1 to (N-1) do                        //    ---|     |
+        if a[i].key > a[i+1].key                  //  6    | n   | n
+          then {vertausche a[i] und a[i+1]}       /w/ 4 ---|     |
+    until {keine Vertauschungen mehr auftreten}   // ------------|
+  end
+/*
+1+n*(n*(6+4) =>  n*n = O(n^2)
+1+n*(6)      =>  n   = Ω(n)
+*/
+\end{lstlisting}
+
+\begin{lstlisting}
+//Selectionsort
+int i,j;                            //2
+int iMin;                           //1 
+for (j = 0; j < n-1; j++) {         //3 ---------|
+    iMin = j;                       //1          |
+    for ( i = j+1; i < n; i++) {    //3 -----|   |
+        if (a[i] < a[iMin]) {       //1      |   |
+            iMin = i;               /w/1     | n | n
+        }                           //       |   |
+    }                               //  -----|   |
+    if(iMin != j) {                 //1          |
+        swap(a[j], a[iMin]);        /w/3         | 
+    }                               //           |
+}                                   // ----------|
+/*
+2+1+3+n*(1+3+n*(1+1)+1+3) =>  n*n = O(n^2)
+12+1+3+n*(1+3+n*(1)+1)    =>  n   = Ω(n)
+*/
+
+Die Komplexitat von meiner Implementierung unterscheided sich nicht von der Allgemeinen.
+
+\end{lstlisting}
 
 \section{Begrundung der Auswahl}
 Die Algorithmen konnen genauso in einer einfach wie doppelt verketteten Liste implementiert ohne einen Komplexitats verlust zu erleiden. Im gegensatz zu Insertion sort zum Beispiel.
