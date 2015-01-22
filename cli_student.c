@@ -18,11 +18,10 @@ Student* newStudentCli ()
     char lastName[100];
     char subject[100];
     char id[100];
-    char* test;
     
     printf("Enter:\n");
     printf("First Name: \n");
-    test = fgets(firstName, sizeof(firstName), stdin);
+    fgets(firstName, sizeof(firstName), stdin);
     size_t fLn = strlen(firstName) - 1;
     if (firstName[fLn] == '\n')
         firstName[fLn] = '\0';
@@ -54,7 +53,10 @@ Student* newStudentCli ()
     else flushStdin();
     if(id == 0L || id[0] == '\0' || id[0] == '\n') return 0L;
     
-    return newStudent (firstName, lastName, subject, atoi(id));
+    int iId = atoi(id);
+    if(iId == -1) return 0L;
+    
+    return newStudent (firstName, lastName, subject, iId);
 }
 
 Student* newStudentCliWithoutNullCheck ()
@@ -96,5 +98,8 @@ Student* newStudentCliWithoutNullCheck ()
     
     if(id == 0L || id[0] == '\0' || id[0] == '\n') strcpy(id, "0");
     
-    return newStudent (firstName, lastName, subject, atoi(id));
+    int iId = atoi(id);
+    if(iId == -1) iId = 0;
+    
+    return newStudent (firstName, lastName, subject, iId);
 }

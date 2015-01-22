@@ -32,9 +32,8 @@ void push (StudentList* sl, Student* s)
     StudentList* node = sl;
     nNew->student = s;
     nNew->next = sl->sentientEnd;
-    while (node->next->next != 0L ) {
+    while (node->next->next != 0L)
         node = node->next;
-    }
     node->next = nNew;
 }
 
@@ -56,6 +55,7 @@ int destroy (StudentList* sl, int stundent_id)
         if (node->student->id == stundent_id) {
             lastNode->next = node->next;
             free(node->student);
+            free(node);
             return 0;
         }
         lastNode = node;

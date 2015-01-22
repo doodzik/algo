@@ -27,6 +27,8 @@ int main(int argc, const char * argv[])
         if (str[strLn] != '\n') flushStdin();
         if(cli_function(str, sl, sl_length)) break;
     }
+    destroyList(&sl);
+    free(sl->next);
     free(sl);
     return 0;
 }

@@ -57,10 +57,11 @@ int destroy (StudentList* sl, int stundent_id)
   while (node->next != NULL)
   {
     if (node->student->id == stundent_id) {
-      lastNode->next = node->next;
-      node->next->previous = lastNode;
-      free(node->student);
-      return 1;
+        lastNode->next = node->next;
+        node->next->previous = lastNode;
+        free(node->student);
+        free(node);
+        return 1;
     }
     lastNode = node;
     node = node->next;
