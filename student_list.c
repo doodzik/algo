@@ -89,18 +89,6 @@ void sortMatrikel(StudentList* sl)
     }
 }
 
-/*
-    n = length(A)
-    repeat
-      swapped = false
-      for i = 1 to n-1 inclusive do
-        if A[i-1] > A[i] then
-          swap( A[i-1], A[i] )
-          swapped = true
-         end if
-       end for
-*/
-
 void sortStudiengang(StudentList* sl)
 {
     //Bubble

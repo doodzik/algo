@@ -121,6 +121,7 @@ void sortStudiengang(StudentList* sl)
                 swaped = true; // 8 + n |
             }
         }
+        i = sl;
     } while (swaped); // 9 + n^2 | 6 + n
 }
 //O(n^2) Ω(n)

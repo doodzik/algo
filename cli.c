@@ -65,7 +65,7 @@ int cli_length(int* sl_length)
 
 int cli_delete_all(StudentList* sl, int* sl_length)
 {
-  destroyList(&sl);
+  if(*sl_length > 0) destroyList(&sl);
   *sl_length = 0;
   return 0;
 }
@@ -84,8 +84,8 @@ int cli_get_student_id()
 
 int cli_delete(StudentList* sl, int* sl_length)
 {
-  destroy(sl, cli_get_student_id());
-  --*sl_length;
+  int result = destroy(sl, cli_get_student_id());
+  *sl_length = *sl_length - result;
   return 0;
 }
 
