@@ -108,6 +108,7 @@ int cli_query(StudentList* sl)
     Student* s;
     newStudentCliWithoutNullCheck(&s);
     queryStudentList(sl, s);
+    free(s);
     return 0;
 }
 
