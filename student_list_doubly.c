@@ -78,7 +78,10 @@ void destroyList (StudentList** sl)
         free(node->previous->student);
         free(node->previous);
     }
-    free(node);
+    if(node->student != 0L){
+        free(node->student);
+        free(node);
+    }
     (*sl)->next = (*sl)->sentientEnd;
     (*sl)->sentientEnd->previous = *sl;
 }
