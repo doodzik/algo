@@ -22,16 +22,6 @@ void initStudentList (StudentList **sl)
     (*sl)->next = (*sl)->sentientEnd;
     (*sl)->student = 0L;
     (*sl)->sentientEnd->student = 0L;
-    
-    /*
-    StudentList *head = (StudentList*) malloc(sizeof(StudentList));
-    StudentList *tail = (StudentList*) malloc(sizeof(StudentList));
-    tail->next = 0L;
-    head->next = tail;
-    head->sentientEnd = tail;
-    head->student = 0L;
-    tail->student = 0L;
-     */
 }
 
 void push (StudentList** sl, Student* s)

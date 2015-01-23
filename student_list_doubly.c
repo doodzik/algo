@@ -14,45 +14,45 @@
 #include "student.h"
 #include "student_list_doubly.h"
 
-StudentList* initStudentList ()
+void initStudentList (StudentList **sl)
 {
-  StudentList* head = (StudentList*) malloc(sizeof(StudentList));
-  StudentList* tail = (StudentList*) malloc(sizeof(StudentList));
-  head->previous = 0L;
-  tail->next = 0L;
-  head->next = tail;
-  tail->previous = head;
-  head->sentientEnd = tail;
-  head->student = 0L;
-  tail->student = 0L;
-  return head;
+    *sl = (StudentList*) malloc(sizeof(StudentList));
+    (*sl)->sentientEnd = (StudentList*) malloc(sizeof(StudentList));
+
+    (*sl)->next = (*sl)->sentientEnd;
+    (*sl)->previous = 0L;
+    (*sl)->student = 0L;
+
+    (*sl)->sentientEnd->next = 0L;
+    (*sl)->sentientEnd->previous = (*sl);
+    (*sl)->sentientEnd->student = 0L;
 }
 
-void unshift (StudentList* sl, Student* s)
+void unshift (StudentList** sl, Student* s)
 {
   StudentList* slNew = (StudentList*) malloc(sizeof(StudentList));
   slNew->previous = 0L;
   slNew->student = s;
-  slNew->next = sl->next;
+  slNew->next = (*sl)->next;
   slNew->next->previous = slNew;
-  sl->next = slNew;
+  (*sl)->next = slNew;
 }
 
-void push (StudentList* sl, Student* s)
+void push (StudentList** sl, Student* s)
 {
   StudentList* nNew = (StudentList*) malloc(sizeof(StudentList));
   nNew->student = s;
-  StudentList* node = sl->sentientEnd->previous;
-  sl->sentientEnd->previous = nNew;
+  StudentList* node = (*sl)->sentientEnd->previous;
+  (*sl)->sentientEnd->previous = nNew;
   nNew->previous = node;
-  nNew->next     = sl->sentientEnd;
+  nNew->next     = (*sl)->sentientEnd;
   node->next     = nNew;
 }
 
 
-int destroy (StudentList* sl, int stundent_id)
+int destroy (StudentList** sl, int stundent_id)
 {
-  StudentList* node = sl->next;
+  StudentList* node = (*sl)->next;
   StudentList* lastNode = node;
   while (node->next != NULL)
   {

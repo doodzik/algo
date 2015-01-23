@@ -42,7 +42,7 @@ int cli_unshift(StudentList ** sl, int* sl_length)
 {
     // TODO: unshift to return status code
     Student *s, *tmp;
-    newStudentCli(&s);
+    tmp = newStudentCli(&s);
     if (tmp == 0L) {
         printf("please varify your input\n");
     }else{
@@ -105,8 +105,8 @@ int cli_query(StudentList* sl)
 {
     printf("IF YOU DONT CARE FOR AN ATTRIBUTE JUST CLICK ENTER\n");
     printf("ALL SPECIFIED VALUES CHECK IF THE STUDENT CONTAINS THE GIVEN VALUE WITHIN ITS VALUE\n\n");
-    Student* s, *tmp;
-    tmp = newStudentCliWithoutNullCheck(&s);
+    Student* s;
+    newStudentCliWithoutNullCheck(&s);
     queryStudentList(sl, s);
     return 0;
 }
