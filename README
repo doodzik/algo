@@ -2,50 +2,50 @@
 \usepackage{listings}
 \begin{document}
 
-\chapter{Losungsbuch}
+\chapter{Lösungsbuch}
 
 \section{Main}
-In `main` werden die Daten initialisiet und das Programm immer wieder von vorne ausgefuhrt bis der Nutzer das programm schliesst.
-Die eingabe der Befehle erfolgt hier, jedoch werden die Befehle in einer anderen Prozedur interpretiert und ausgefuhrt.
-Das Ziel dahinter ist dass das Programm einfacher zu verstehen ist, da wir die Verantwortung teilen und hinter abstrakteren Prozeduren bundeln.
+In Main werden die Daten initialisiert und das Programm immer wieder von vorne ausgeführt bis der Nutzer das Programm schließt.
+Die Eingabe der Befehle erfolgt hier, jedoch werden die Befehle in einer anderen Prozedur interpretiert und ausgeführt.
+Das Ziel dahinter ist, dass das Programm einfacher zu verstehen ist, da wir die Verantwortung teilen und hinter weniger abstrakten Prozeduren bündeln.
 
 \section{CLI}
-Die cli.c Prozeduren dienen als ein Adapter zwischen der eigentlichen Logik des Programms und der Ausenwelt.
-Uber die funktion `cli_function` werden die Befehle des Nutzers Interpretiert und die jeweilige adapter Prozedur in cli.c aufgerufen.
+Die CLI Prozeduren dienen als ein Adapter zwischen der eigentlichen Logik des Programms und der Außenwelt.
+Über die funktion `cli_function` werden die Befehle des Nutzers Interpretiert und die jeweilige adapter Funktion in cli.c aufgerufen.
 Diese Funktionen gehen sicher dass die fur den gegebenen Befehls notwendigen Prozeduren ausgefuhrt werden.
 Und das diese mit korreckten Daten verwendet werden.
 
 \section{util}
-In der util datei sind hilfreiche Prozeduren gespeichert die in keine der anderen Dateien platzfinden und auch keiner eigenen Datei bedurfen.
-Wenn dies ein groseres Projekt ware hatte ich die Funktionen in eigene Dateien ausgelagernt.
-Da sonst solch eine util Datei ein schwarzes Prozeduren-Loch fur Entwickler werden wurde.
+In der util Datei sind hilfreiche Funktionen gespeichert die in keine der anderen Dateien platzfinden und auch keiner eigenen Datei bedürfen.
+Wenn dies ein größeres Projekt wäre hätte ich die Funktionen in eigene Dateien ausgelagernt.
+Da sonst solch eine util Datei ein schwarzes Funktions-Loch fur Entwickler werden würde.
 
 \section{student}
-In student.c sind alle Prozeduren implementiert die die Student Struktur betreffen.
+In student.c sind alle Funktionen implementiert die die Student Struktur betreffen.
 Das interesannteste in der Datei ist wie ich das Subject Enum defeniere.
-Ich brauche in meinem Code die Subjects einmal als Enum und als String.
-Dafur benutzte ich den Preprozessor damit ich die Subjects nicht zweimal hinschreiben muss und damit sie in der gleichen Reihenfolge sind.
+Wir brauchen in dem Code die Subjects einmal als Enum und als String.
+Dafür benutzte ich den Preprozessor damit ich die Subjects nicht zweimal hinschreiben muss und damit sie in der gleichen Reihenfolge sind.
 
 \section{cli_student}
-In cli_student sind adapter Prozeduren fur student. siehe die Sektion CLI.
+In cli_student sind adapter Prozeduren für Student. Siehe die Sektion CLI.
 
 \section{student_list, doppelt und einfach}
-Das Interface fur die Doppelt wie einfach Verkettete Liste ist bei mir die selbe, weswegen sie sich eine header Datei teilen.
+Das Interface für die Doppelt wie einfach Verkettete Liste ist bei mir die selbe, weswegen sie sich eine header Datei teilen.
 Diese wird von den anderen Dateien included.
 Damit wir angeben welche Listenform wir verwenden wollen mussen wir beim Kompilieren oder im Code `DOUBLE_LINKED_LIST` defenieren oder undefeniert lassen.
-Daraufhin wird die die jeweilige Listenstruktur und implementation von student_list.h kompeliert.
+Daraufhin wird die jeweilige Listenstruktur und implementation von student_list.h kompeliert.
 
 \section{Makefile}
-Das Makefile ist weitestgehend aus den Unterlagen ubernommen.
-Ich habe dieses ledeglich fur meine Bedurfnisse erweitert.
+Das Makefile ist weitestgehend aus den Unterlagen übernommen.
+Ich habe dieses ledeglich fur meine Bedürfnisse erweitert.
 
 Wichtig ist das sie mit `make` die einfache student_list kompilieren und mit `make double` die doppelte. 
 
 \section{TODO}
-Ich wurde das Pattern das ich in Main und CLI beschrieben habe strikter durchziehen.
-Z.b. wurde ich in den Prozeduren von cli_student nicht direckt einen Studenten erzeugen sondern das die cli Funktionen machen lassen.
-Zudem wurde ich die Liste als eine generische Implementieren wenn ich ich neu anfangen wurde.
-Ausserdem wurde ich mehr mit Status Codes arbeiten. In der Cli habe ich versucht das zu implementieren. Dies ist jedoch in meinen Augen eher durftig umgesetzt worden.
+Das Pattern das in Main und CLI beschrieben wurde sollte strikter durchgezogen werden.
+Z.b. sollte in den Prozeduren von cli_student nicht direckt einen Studenten erzeugt werde, die cli Funktionen sollte das erledigen.
+Zudem sollte die Liste als eine generische Implementiert werden, falls das Programm geschrieben werden würde.
+Ausserdem sollten man mehr mit Status Codes arbeiten. In der CLI wird versucht das zu implementieren. Dies ist jedoch eher dürftig umgesetzt worden.
 
 \chapter{3}
    effizienter:
@@ -57,20 +57,20 @@ Ausserdem wurde ich mehr mit Status Codes arbeiten. In der Cli habe ich versucht
    (c) Hinzufügen eines Elements nach dem letzten Element.
     
 \section{b}
-Wir mussen keine verbindung zu vorherigen element setzten.
+Wir müssen keine verbindung zu vorherigen Element setzten.
 Dadurch spare ich 6 operationen.
 
 \section{a}
-Wir mussen keine verbindung zu vorherigen element setzten.
+Wir müssen keine verbindung zu vorherigen Element setzten.
 Dadurch spare ich 4 operationen.
 
 \section{g}
-Wir mussen keine verbindung zu vorherigen element setzten.
+Wir müssen keine verbindung zu vorherigen Element setzten.
 Dadurch spare ich 2 operationen.
 
 \section{c}
-Wir mussen die Liste einmal durchlaufen um ein element am ende hinzuzufugen O(n).
-Bei einer Doppeltverketteten Liste ist es O(1), da wir uber den end Listenkopf direkt darauf zugreifen kann.
+Wir müssen die Liste einmal durchlaufen um ein Element am Ende hinzuzufügen O(n).
+Bei einer Doppeltverketteten Liste ist es O(1), da wir über den end Listenkopf direkt darauf zugreifen können.
 
 \chapter{5}
 
@@ -121,7 +121,7 @@ void sortStudiengang(StudentList* sl)
         while (i->next->next->student != 0L) {                    //4  ------|       |
             i=i->next;                                            //2        |       |
             if (i->student->subject > i->next->student->subject) {//6        |       |
-                swapStudents(i, i->next);                         /w/8       | n     | n -> falls nicht sortiert
+                swapStudents(i, i->next);                         /w/8       | n     | n
                 swaped = true;                                    /w/9       |       |
             }                                                     //         |       |
         }                                                         //   ------|       |
@@ -176,12 +176,12 @@ for (j = 0; j < n-1; j++) {         //3 ---------|
 12+1+3+n*(1+3+n*(1)+1)    =>  n   = Ω(n)
 */
 
-Die Komplexitat von meiner Implementierung unterscheided sich nicht von der Allgemeinen.
+Die Komplexität von meiner Implementierung unterscheided sich nicht von der Allgemeinen.
 
 \end{lstlisting}
 
 \section{Begrundung der Auswahl}
-Die Algorithmen konnen genauso in einer einfach wie doppelt verketteten Liste implementiert ohne einen Komplexitats verlust zu erleiden. Im gegensatz zu Insertion sort zum Beispiel.
-Zudem sind ist die Berechnung der Komplexitat auch einfacher und die Performance in dem Beispiel nicht wirklich relevant.
+Die Algorithmen können genauso in einer einfach wie doppelt verketteten Liste implementiert werden ohne einen komplexitäts Verlust zu erleiden. Im gegensatz zu Insertion sort zum Beispiel.
+Ich habe eine einfachere Implementation vorgezogen, anstatt einer schnelleren.
 
 \end{document}

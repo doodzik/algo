@@ -1,5 +1,7 @@
 CC=gcc
-OPTIONS=-g -Wall --std=c99
+# Wall fails in Linux. The reason is that gcc outputs that something isn't used, but in fact it is.
+# That's why I decided to only use W
+OPTIONS=-g -W --std=c99
 TARGET=main
 DEFINE=-D DOUBLE_LINKED_LIST
 
