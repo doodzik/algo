@@ -13,7 +13,7 @@
 #include "student.h"
 #include "student_list.h"
 
-int main(int argc, const char * argv[])
+int main()
 {
     char str[100];
     StudentList *sl;
